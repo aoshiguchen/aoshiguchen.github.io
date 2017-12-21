@@ -335,3 +335,58 @@ $(document).ready(function () {
   }
 
 });
+
+
+//自定义js函数
+me = {};
+NexT.me = me;
+
+function addScriptTag(src) {
+    var script = document.createElement("script");
+    script.setAttribute("type", "text/javascript");
+    script.src = src;
+    document.body.appendChild(script);
+}
+
+function getShortUrlCallback(data){
+  console.log('short url:',data.url);
+  if(data.url){
+    paste(data.url);
+  }else{
+    console.log('req error:',data.err);
+    paste(data.err);
+  }
+}
+
+function paste(text){
+  console.log('paste',text);
+  var textarea = document.createElement("textarea");
+  textarea.style.position = 'fixed';
+  textarea.style.top = 500;
+  textarea.style.left = 500;
+  textarea.style.border = 'none';
+  textarea.style.outline = 'none';
+  textarea.style.resize = 'none';
+  textarea.style.background = 'transparent';
+  textarea.style.color = 'transparent'; 
+
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    const msg = document.execCommand('copy') ? '成功' : '失败';
+    console.log(msg);
+  } catch (err) {
+    console.log('不支持复制', err);
+  }
+  document.body.removeChild(textarea);
+}
+
+me.copyPageLink = function(){
+    
+  var url = window.location;
+  console.log('copyPageLink',url);
+
+  addScriptTag('http://suo.im/api.php?format=jsonp&url=' + encodeURIComponent(url) + '&callback=getShortUrlCallback');
+
+};
