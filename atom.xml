@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>傲世孤尘</title>
+  
+  <subtitle>还生命以坦然，遗沧海以一笑</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-12-21T02:13:42.185Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>aoshiguchen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>msi文件安装错误</title>
+    <link href="http://yoursite.com/2017/12/21/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/msi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF/"/>
+    <id>http://yoursite.com/2017/12/21/系统软件/msi文件安装错误/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T02:13:42.185Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、错误代码为2502、2503的情况下，用如下方法解决</p><p>首先用管理员身份打开命令行，然后用如下命令进行安装：<br>msiexec /package 路径</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、错误代码为2502、2503的情况下，用如下方法解决&lt;/p&gt;
+&lt;p&gt;首先用管理员身份打开命令行，然后用如下命令进行安装：&lt;br&gt;msiexec /package 路径&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="系统软件" scheme="http://yoursite.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="系统软件" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="安装" scheme="http://yoursite.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用java实现一个简单的深度神经网络</title>
+    <link href="http://yoursite.com/2017/12/21/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/0.0.1/java/%E7%94%A8java%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <id>http://yoursite.com/2017/12/21/算法/深度学习/0.0.1/java/用java实现一个简单的深度神经网络/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T09:47:07.929Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BpDeep</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span>[][] layer;<span class="comment">//神经网络各层节点</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span>[][] layerErr;<span class="comment">//神经网络各节点误差</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span>[][][] layer_weight;<span class="comment">//各层节点权重</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span>[][][] layer_weight_delta;<span class="comment">//各层节点权重动量</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span> mobp;<span class="comment">//动量系数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span> rate;<span class="comment">//学习系数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BpDeep</span><span class="params">(<span class="keyword">int</span>[] layernum, <span class="keyword">double</span> rate, <span class="keyword">double</span> mobp)</span></span>&#123;</span><br><span class="line"><span class="keyword">this</span>.mobp = mobp;</span><br><span class="line"><span class="keyword">this</span>.rate = rate;</span><br><span class="line">layer = <span class="keyword">new</span> <span class="keyword">double</span>[layernum.length][];</span><br><span class="line">layerErr = <span class="keyword">new</span> <span class="keyword">double</span>[layernum.length][];</span><br><span class="line">layer_weight = <span class="keyword">new</span> <span class="keyword">double</span>[layernum.length][][];</span><br><span class="line">layer_weight_delta = <span class="keyword">new</span> <span class="keyword">double</span>[layernum.length][][];</span><br><span class="line">Random random = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;layernum.length;l++)&#123;</span><br><span class="line">layer[l]=<span class="keyword">new</span> <span class="keyword">double</span>[layernum[l]];</span><br><span class="line">layerErr[l]=<span class="keyword">new</span> <span class="keyword">double</span>[layernum[l]];</span><br><span class="line"><span class="keyword">if</span>(l+<span class="number">1</span>&lt;layernum.length)&#123;</span><br><span class="line">layer_weight[l]=<span class="keyword">new</span> <span class="keyword">double</span>[layernum[l]+<span class="number">1</span>][layernum[l+<span class="number">1</span>]];</span><br><span class="line">layer_weight_delta[l]=<span class="keyword">new</span> <span class="keyword">double</span>[layernum[l]+<span class="number">1</span>][layernum[l+<span class="number">1</span>]];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;layernum[l]+<span class="number">1</span>;j++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;layernum[l+<span class="number">1</span>];i++)</span><br><span class="line">layer_weight[l][j][i]=random.nextDouble();<span class="comment">//随机初始化权重</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//逐层向前计算输出</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">double</span>[] computeOut(<span class="keyword">double</span>[] in)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;layer.length;l++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;layer[l].length;j++)&#123;</span><br><span class="line"><span class="keyword">double</span> z=layer_weight[l-<span class="number">1</span>][layer[l-<span class="number">1</span>].length][j];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;layer[l-<span class="number">1</span>].length;i++)&#123;</span><br><span class="line">layer[l-<span class="number">1</span>][i]=l==<span class="number">1</span>?in[i]:layer[l-<span class="number">1</span>][i];</span><br><span class="line">z+=layer_weight[l-<span class="number">1</span>][i][j]*layer[l-<span class="number">1</span>][i];</span><br><span class="line">&#125;</span><br><span class="line">layer[l][j]=<span class="number">1</span>/(<span class="number">1</span>+Math.exp(-z));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> layer[layer.length-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//逐层反向计算误差并修改权重</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateWeight</span><span class="params">(<span class="keyword">double</span>[] tar)</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> l=layer.length-<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;layerErr[l].length;j++)</span><br><span class="line">layerErr[l][j]=layer[l][j]*(<span class="number">1</span>-layer[l][j])*(tar[j]-layer[l][j]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(l--&gt;<span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;layerErr[l].length;j++)&#123;</span><br><span class="line"><span class="keyword">double</span> z = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;layerErr[l+<span class="number">1</span>].length;i++)&#123;</span><br><span class="line">z=z+l&gt;<span class="number">0</span>?layerErr[l+<span class="number">1</span>][i]*layer_weight[l][j][i]:<span class="number">0</span>;</span><br><span class="line">layer_weight_delta[l][j][i]= mobp*layer_weight_delta[l][j][i]+rate*layerErr[l+<span class="number">1</span>][i]*layer[l][j];<span class="comment">//隐含层动量调整</span></span><br><span class="line">layer_weight[l][j][i]+=layer_weight_delta[l][j][i];<span class="comment">//隐含层权重调整</span></span><br><span class="line"><span class="keyword">if</span>(j==layerErr[l].length-<span class="number">1</span>)&#123;</span><br><span class="line">layer_weight_delta[l][j+<span class="number">1</span>][i]= mobp*layer_weight_delta[l][j+<span class="number">1</span>][i]+rate*layerErr[l+<span class="number">1</span>][i];<span class="comment">//截距动量调整</span></span><br><span class="line">layer_weight[l][j+<span class="number">1</span>][i]+=layer_weight_delta[l][j+<span class="number">1</span>][i];<span class="comment">//截距权重调整</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">layerErr[l][j]=z*layer[l][j]*(<span class="number">1</span>-layer[l][j]);<span class="comment">//记录误差</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">train</span><span class="params">(<span class="keyword">double</span>[] in, <span class="keyword">double</span>[] tar)</span></span>&#123;</span><br><span class="line"><span class="keyword">double</span>[] out = computeOut(in);</span><br><span class="line">updateWeight(tar);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="测试1"><a href="#测试1" class="headerlink" title="测试1"></a>测试1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BpDeepTest</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//初始化神经网络的基本配置</span></span><br><span class="line">BpDeep bp = <span class="keyword">new</span> BpDeep(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">10</span>,<span class="number">2</span>&#125;, <span class="number">0.15</span>, <span class="number">0.8</span>);</span><br><span class="line"><span class="comment">//BpDeep bp = new BpDeep(new int[]&#123;2,10,1&#125;, 0.15, 0.8);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//设置样本数据</span></span><br><span class="line"><span class="keyword">double</span>[][] data = <span class="keyword">new</span> <span class="keyword">double</span>[][]&#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">2</span>,<span class="number">2</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">2</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="comment">//设置目标数据</span></span><br><span class="line"><span class="keyword">double</span>[][] target = <span class="keyword">new</span> <span class="keyword">double</span>[][]&#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line"><span class="comment">//double[][] target = new double[][]&#123;&#123;1&#125;,&#123;0&#125;,&#123;0&#125;,&#123;1&#125;&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//迭代训练</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;<span class="number">5000</span>;n++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;data.length;i++)</span><br><span class="line">bp.train(data[i], target[i]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;data.length;j++)&#123;</span><br><span class="line"><span class="keyword">double</span>[] result = bp.computeOut(data[j]);</span><br><span class="line">System.out.println(Arrays.toString(data[j])+<span class="string">":"</span>+Arrays.toString(result));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span>[] x = <span class="keyword">new</span> <span class="keyword">double</span>[]&#123;<span class="number">3</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">double</span>[] result = bp.computeOut(x);</span><br><span class="line">System.out.println(Arrays.toString(x)+<span class="string">":"</span>+Arrays.toString(result));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="测试2"><a href="#测试2" class="headerlink" title="测试2"></a>测试2</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BpDeepTest2</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">BpDeep bp = <span class="keyword">new</span> BpDeep(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span>,<span class="number">1</span>&#125;, <span class="number">0.4</span>, <span class="number">0.001</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span>[][] data = getData();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">0</span>;n&lt;<span class="number">1000</span>;n++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;data.length;i++)</span><br><span class="line">bp.train(<span class="keyword">new</span> <span class="keyword">double</span>[]&#123;data[i][<span class="number">0</span>]&#125;, <span class="keyword">new</span> <span class="keyword">double</span>[]&#123;data[i][<span class="number">1</span>]&#125;);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"训练结果:"</span>);</span><br><span class="line"><span class="keyword">double</span> rate = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> successCount = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;data.length;j++)&#123;</span><br><span class="line"><span class="keyword">double</span>[] result = bp.computeOut(data[j]);</span><br><span class="line">System.out.println(data[j][<span class="number">0</span>] + <span class="string">":"</span> + result[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(((<span class="keyword">int</span>)(result[<span class="number">0</span>]*<span class="number">2</span>)) == data[j][<span class="number">1</span>])&#123;</span><br><span class="line">successCount++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">rate = (successCount * <span class="number">1.0</span>) / data.length;</span><br><span class="line">System.out.printf(<span class="string">"rate:%.2f\n"</span>,rate);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"验证:"</span>);</span><br><span class="line"><span class="keyword">double</span>[] x = <span class="keyword">new</span> <span class="keyword">double</span>[]&#123;<span class="number">201</span>,<span class="number">202</span>,<span class="number">203</span>,<span class="number">204</span>,<span class="number">205</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;x.length;j++)&#123;</span><br><span class="line"><span class="keyword">double</span>[] result = bp.computeOut(<span class="keyword">new</span> <span class="keyword">double</span>[]&#123;x[j]&#125;);</span><br><span class="line">System.out.println(x[j] + <span class="string">":"</span> + result[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span>[][] getData() <span class="keyword">throws</span> Exception&#123;</span><br><span class="line"></span><br><span class="line">List&lt;Double[]&gt; list = <span class="keyword">new</span> ArrayList&lt;Double[]&gt;();</span><br><span class="line">Scanner scanner = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> FileInputStream(<span class="string">"data.txt"</span>));</span><br><span class="line"><span class="keyword">while</span>(scanner.hasNext())&#123;</span><br><span class="line"><span class="keyword">double</span> a = scanner.nextDouble();</span><br><span class="line"><span class="keyword">double</span> b = scanner.nextDouble();</span><br><span class="line"></span><br><span class="line">list.add(<span class="keyword">new</span> Double[]&#123;a,b&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span>[][] result = <span class="keyword">new</span> <span class="keyword">double</span>[list.size()][<span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; list.size();i++)&#123;</span><br><span class="line">result[i][<span class="number">0</span>] = list.get(i)[<span class="number">0</span>];</span><br><span class="line">result[i][<span class="number">1</span>] = list.get(i)[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>data.txt中的数据如下：<br>0 1<br>1 0<br>2 1<br>3 0<br>4 1<br>5 0<br>6 1<br>7 0<br>8 1<br>9 0<br>10 1<br>11 0<br>12 1<br>13 0<br>14 1<br>15 0<br>16 1<br>17 0<br>18 1<br>19 0<br>20 1</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul><li>硬编码的智能：人工智能早期，用以实现专家系统。特点，实现难度高，并且难以适应变化。</li><li>机器学习：程序本身不编码实现任何解决具体问题的方法，而是模仿生物的进化、认知，能够不断地从周围环境中获取数据进行学习。特点：实现难度相较于上一个简单，但是需要大量数据，训练的方法也很重要，能够适应变化解决各种新的问题。</li></ul><h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><ul><li><p>外界信号通过你的眼睛、鼻子、舌头等等一系列感知器官（输入）捕获后传入大脑皮层（这个我也不清除，先假装是的），大脑皮层是第一层神经元，经过第一层处理后，然后传入第二层、第三层，最终经过n层处理后得到结果，所以我们能够对纷繁复杂的世界产生正确的认知。</p></li><li><p>深度神经网络算法，就是基于人脑认知事务进行学习的这一特性的算法。初始数据经由多层神经元的计算后得到输出，刚开始时可能会有较大的误差，这时就需要我们的训练。</p></li><li><p>训练分为监督式训练、无监督训练。这里我们讲的是监督式训练。</p></li></ul><h3 id="监督式训练："><a href="#监督式训练：" class="headerlink" title="监督式训练："></a>监督式训练：</h3><p>给出一组样本数据，以及对应的正确期望结果。让神经网络不断学习，神经网络会在学习的过程中不断地矫正神经元连接的突触的权值、动量系数等等。理论上经过若干次的训练后，这个神经网络就会调整为一个最佳的情况，这时，对给定的输入，能够在比较大的概率下给出正确的结果。</p><h2 id="运行演示"><a href="#运行演示" class="headerlink" title="运行演示"></a>运行演示</h2><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><p>问题：我们需要将笛卡尔坐标系中的点按照y=x分界线，分成两类。</p><p>样本数据：{1,2},{2,2},{1,1},{2,1}<br>期望数据：{1,0},{0,1},{0,1},{1,0}</p><p>每组输入数据个数为2，所以第一层神经元的个数为2<br>每组对应输出结果个数为2，所以最后一层神经元个数为2</p><p>{1,0}、{0,1} 分别对应两种结果。</p><h3 id="代码简单解释"><a href="#代码简单解释" class="headerlink" title="代码简单解释"></a>代码简单解释</h3><p>BpDeep bp = new BpDeep(new int[]{2,10,2}, 0.15, 0.8);<br>这是构造一个深度神经网络。第一个参数为一个一维数组，数组的长度为3，表示这个神经网络<br>一共3层。第一个元素为2表示第一层2个神经元，最后一个元素为2，表示最后一层2个神经元。<br>后面的0.15、0.8是动量系数还有啥的，现在说你们也不懂，先不说了，这两个数字可以随便改。<br>0到1之间的一个数字，对算法的学习效率有些影响，不影响逻辑。</p><p>后面的样本数据和目标数据就不说了，我们直接看结果。</p><h3 id="示例运行"><a href="#示例运行" class="headerlink" title="示例运行"></a>示例运行</h3><p>这四个是训练的结果：<br>[1.0, 2.0]:[0.9792365424853283, 0.020600382812002088]<br>上面对应的样本为：{1,2} {1,0}<br>[2.0, 2.0]:[0.02256564436382444, 0.9773361523239155]<br>上面对应的样本为：{2,2} {0,1}<br>[1.0, 1.0]:[0.016761474334048444, 0.9837176729362672]<br>上面对应的样本为：{1,1} {0,1}<br>[2.0, 1.0]:[0.9793917240613336, 0.02048522092272838]<br>上面对应的样本为：{2,1} {1,0}</p><p>这一个是训练结束后，测试的数据：<br>[3.0, 1.0]:[0.9899489337264226, 0.009920676075267004]<br>所以得到结果：{3,1}属于分类：{1,0}</p><h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><p>问题：将整数划分为正数和负数两类。暂不考虑0，样本数据如下：<br>-5 0<br>-4 0<br>-3 0<br>-2 0<br>-1 0<br>1 1<br>2 1<br>3 1<br>4 1<br>5 1</p><p>负数输出0，整数输出1。训练完成后，验证数据如下：<br>100:1<br>-10:0<br>63:1<br>50:1<br>-9:0<br>75:1<br>55:1<br>63:1</p><h2 id="进阶方向"><a href="#进阶方向" class="headerlink" title="进阶方向"></a>进阶方向</h2><ul><li><p>参数调优：<br>本示例中并没有测试动量系数和学习稀疏的不同会给学习效率带来何种影响，但这个事实上决定着<br>学习结果的效率。</p></li><li><p>激活函数：<br>还有就是算法中使用的激活函数为：1/(1+Math.exp(-z))。这是目前业界用的非常广泛的一个激活<br>函数，这个函数自己可以随便换，不同的激活函数对学习也有重大的影响。设计不好的激活函数，<br>可能导致极难快速收敛。</p></li><li><p>输入输出的定义：<br>任何数据都可以归结为一个一维数组信号，所有的分类结果都可以归结为一组0和1组成的一维数组。</p></li></ul><p>在示例1中，将两个类别定义为{1,0} {0,1}<br>在示例2中，将两个类别定义为0 1<br>这个自己可以视情况而定，无有定解。</p><ul><li>神经网络的神经元层数、个数：<br>从上我们可以看到，决定第一层神经元数量的是输入数据，决定最后一层神经元数量的是输出数据。<br>而中间的神经元层数、个数自己可以视情况而定，没有理论证明多少层更合适。这个需要自己<br>不断尝试调优。一个基本的方向是，问题越复杂，需要的神经元数量、层数会越多。因此计算的<br>效率也会越低</li></ul><p>本算法是一个简化版的深度学习算法，非常简短。要解决稍复杂的问题，可能训练特别耗时，这只是一个单机实现，如果用上云计算，它的优势才能充分的体现出来。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;算法实现&quot;&gt;&lt;a href=&quot;#算法实现&quot; class=&quot;headerlink&quot; title=&quot;算法实现&quot;&gt;&lt;/a&gt;算法实现&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="深度学习" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1、在linux上搭建svn服务</title>
+    <link href="http://yoursite.com/2017/12/21/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Svn/1%E3%80%81%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://yoursite.com/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T07:34:06.247Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>操作系统 CentOS 7.2 64位</li><li>CPU 1核</li><li>内存 1GB</li></ul><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p>yum install subversion</p></blockquote><a id="more"></a><h2 id="查看安装位置："><a href="#查看安装位置：" class="headerlink" title="查看安装位置："></a>查看安装位置：</h2><blockquote><p>rpm -ql subversion</p></blockquote><img src="/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/01.png"><h2 id="查看svn的版本"><a href="#查看svn的版本" class="headerlink" title="查看svn的版本"></a>查看svn的版本</h2><blockquote><p>/usr/bin/svnversion –version</p></blockquote><img src="/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/02.png"><h2 id="创建svn版本库根目录"><a href="#创建svn版本库根目录" class="headerlink" title="创建svn版本库根目录"></a>创建svn版本库根目录</h2><blockquote><p>mkdir -p /usr/repo/svn</p></blockquote><h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><blockquote><p>svnadmin create /usr/repo/svn/test1<br>执行了这个命令之后会在/usr/repo/svn/test1目录下生成如下这些文件:</p></blockquote><img src="/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/03.png"><h2 id="修改svn配置"><a href="#修改svn配置" class="headerlink" title="修改svn配置"></a>修改svn配置</h2><p>进入conf目录<br>authz文件是权限控制文件<br>passwd是帐号密码文件<br>svnserve.conf SVN服务配置文件</p><h3 id="设置帐号密码"><a href="#设置帐号密码" class="headerlink" title="设置帐号密码"></a>设置帐号密码</h3><p>vi passwd<br>在[users]块中添加用户和密码，格式：帐号=密码，如yangwen = 123456</p><h3 id="设置权限"><a href="#设置权限" class="headerlink" title="设置权限"></a>设置权限</h3><p>vi authz<br>在末尾添加如下代码：<br>[/]<br>yangwen=rw<br>w=r<br>意思是版本库的根目录dan对其有读写权限，w只有读权限。</p><h3 id="修改svnserve-conf文件"><a href="#修改svnserve-conf文件" class="headerlink" title="修改svnserve.conf文件"></a>修改svnserve.conf文件</h3><p>vi svnserve.conf<br>打开下面的几个注释：<br>anon-access = read #匿名用户可读<br>auth-access = write #授权用户可写<br>password-db = passwd #使用哪个文件作为账号文件<br>authz-db = authz #使用哪个文件作为权限文件<br>realm = /var/svn/svnrepos # 认证空间名，版本库所在目录</p><h2 id="启动svn版本库"><a href="#启动svn版本库" class="headerlink" title="启动svn版本库"></a>启动svn版本库</h2><blockquote><p>svnserve -d -r /usr/repo/svn</p></blockquote><h2 id="查看是否启动成功"><a href="#查看是否启动成功" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h2><blockquote><p>ps aux | grep svnserve<br>执行命令，结果如下：</p></blockquote><img src="/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/04.png"><h2 id="在Windows上测试"><a href="#在Windows上测试" class="headerlink" title="在Windows上测试"></a>在Windows上测试</h2><blockquote><p>Checkout: svn://118.89.63.66/test1</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;操作系统 CentOS 7.2 64位&lt;/li&gt;
+&lt;li&gt;CPU 1核&lt;/li&gt;
+&lt;li&gt;内存 1GB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;yum install subversion&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="svn" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/svn/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="svn" scheme="http://yoursite.com/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插件</title>
+    <link href="http://yoursite.com/2017/12/21/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/eclipse/%E6%8F%92%E4%BB%B6/"/>
+    <id>http://yoursite.com/2017/12/21/开发工具/eclipse/插件/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T02:17:06.216Z</updated>
+    
+    <content type="html"><![CDATA[<p>drools： <a href="http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/" target="_blank" rel="noopener">http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;drools： &lt;a href=&quot;http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://downl
+      
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="eclipse" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/eclipse/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="插件" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1、在linux上搭建Git服务</title>
+    <link href="http://yoursite.com/2017/12/21/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/1%E3%80%81%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://yoursite.com/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T07:34:24.353Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>操作系统 CentOS 7.2 64位</li><li>CPU 1核</li><li>内存 1GB</li></ul><h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><blockquote><p>yum install -y git</p></blockquote><a id="more"></a><h2 id="查看安装版本"><a href="#查看安装版本" class="headerlink" title="查看安装版本"></a>查看安装版本</h2><blockquote><p>git –version</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/01.png"><h2 id="创建Git用户，并为Git用户设置密码"><a href="#创建Git用户，并为Git用户设置密码" class="headerlink" title="创建Git用户，并为Git用户设置密码"></a>创建Git用户，并为Git用户设置密码</h2><blockquote><p>useradd git<br>passwd git  （12345678）</p></blockquote><h2 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h2><blockquote><p>mkdir -p /usr/repo/git/test1.git<br>git init –bare /usr/repo/git/test1.git<br>cd /usr/repo/git/<br>chown -R git:git test1.git</p></blockquote><h2 id="客户端clone远程仓库"><a href="#客户端clone远程仓库" class="headerlink" title="客户端clone远程仓库"></a>客户端clone远程仓库</h2><blockquote><p>git clone git@118.89.63.66:/usr/repo/git/test1.git</p></blockquote><h2 id="客户端创建SSH公钥和私钥"><a href="#客户端创建SSH公钥和私钥" class="headerlink" title="客户端创建SSH公钥和私钥"></a>客户端创建SSH公钥和私钥</h2><p>客户端第一次clone会要求输入密码，此时可用SHH创建公钥、私钥。<br>在window客户端，git bash中执行以下命令：</p><blockquote><p>ssh-keygen -t rsa -C “1052045476@qq.com”  </p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/02.png"><h2 id="服务器端Git打开RSA认证"><a href="#服务器端Git打开RSA认证" class="headerlink" title="服务器端Git打开RSA认证"></a>服务器端Git打开RSA认证</h2><p>进入 /etc/ssh 目录，编辑 sshd_config，打开以下三个配置的注释：<br>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile .ssh/authorized_keys</p><h2 id="保存并重启-sshd-服务："><a href="#保存并重启-sshd-服务：" class="headerlink" title="保存并重启 sshd 服务："></a>保存并重启 sshd 服务：</h2><blockquote><p>service sshd restart</p></blockquote><h2 id="打开RSA认证"><a href="#打开RSA认证" class="headerlink" title="打开RSA认证"></a>打开RSA认证</h2><p>由 AuthorizedKeysFile 得知公钥的存放路径是 .ssh/authorized_keys，实际上是$Home/.ssh/authorized_keys，由于管理 Git 服务的用户是 git，所以实际存放公钥的路径是 /home/git/.ssh/authorized_keys<br>在 /home/git/ 下创建目录 .ssh</p><blockquote><p>cd /home/git<br>mkdir .ssh<br>chown -R git:git .ssh</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/03.png"><h2 id="将客户端公钥导入服务端-home-git-ssh-authorized-keys文件"><a href="#将客户端公钥导入服务端-home-git-ssh-authorized-keys文件" class="headerlink" title="将客户端公钥导入服务端 /home/git/.ssh/authorized_keys文件"></a>将客户端公钥导入服务端 /home/git/.ssh/authorized_keys文件</h2><blockquote><p>ssh git@118.89.63.66 ‘cat &gt;&gt; .ssh/authorized_keys’ &lt; ~/.ssh/id_rsa.pub</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/04.png"><p>此处输入git密码，（12345678）</p><p>回到服务器端，查看 .ssh 下是否存在 authorized_keys 文件：</p><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/05.png"><h2 id="修改-ssh目录权限"><a href="#修改-ssh目录权限" class="headerlink" title="修改.ssh目录权限"></a>修改.ssh目录权限</h2><blockquote><p>chmod 700 .ssh<br>cd .ssh<br>chmod 600 authorized_keys </p></blockquote><h2 id="客户端clone仓库"><a href="#客户端clone仓库" class="headerlink" title="客户端clone仓库"></a>客户端clone仓库</h2><blockquote><p>git clone git@118.89.63.66:/usr/repo/git/test1.git</p></blockquote><h2 id="禁止git用户-ssh登录服务器"><a href="#禁止git用户-ssh登录服务器" class="headerlink" title="禁止git用户 ssh登录服务器"></a>禁止git用户 ssh登录服务器</h2><p>编辑 /etc/passwd<br>找到：<br>git:x:502:504::/home/git:/bin/bash<br>修改为<br>git:x:502:504::/home/git:/bin/git-shell<br>此时 git 用户可以正常通过 ssh 使用 git，但无法通过 ssh 登录系统。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;操作系统 CentOS 7.2 64位&lt;/li&gt;
+&lt;li&gt;CPU 1核&lt;/li&gt;
+&lt;li&gt;内存 1GB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;yum install -y git&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Git" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>昊沧十周年篝火晚会有感</title>
+    <link href="http://yoursite.com/2015/10/23/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%98%8A%E6%B2%A7%E5%8D%81%E5%91%A8%E5%B9%B4%E7%AF%9D%E7%81%AB%E6%99%9A%E4%BC%9A%E6%9C%89%E6%84%9F/"/>
+    <id>http://yoursite.com/2015/10/23/文学/古诗词/昊沧十周年篝火晚会有感/</id>
+    <published>2015-10-22T16:00:00.000Z</published>
+    <updated>2017-12-20T09:24:00.671Z</updated>
+    
+    <content type="html"><![CDATA[<p>一入西山气象新，餐厅未到笑先闻。<br>有望引来无望辈，盛情聚起重情人。<br>歌声袅袅难停笔，篝火轰轰欲举樽。<br>揽袖相邀谈十载，持杯共酒醉千巡。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一入西山气象新，餐厅未到笑先闻。&lt;br&gt;有望引来无望辈，盛情聚起重情人。&lt;br&gt;歌声袅袅难停笔，篝火轰轰欲举樽。&lt;br&gt;揽袖相邀谈十载，持杯共酒醉千巡。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>何以成说</title>
+    <link href="http://yoursite.com/2015/07/11/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E4%BD%95%E4%BB%A5%E6%88%90%E8%AF%B4/"/>
+    <id>http://yoursite.com/2015/07/11/文学/古诗词/何以成说/</id>
+    <published>2015-07-10T16:00:00.000Z</published>
+    <updated>2017-12-21T01:39:28.982Z</updated>
+    
+    <content type="html"><![CDATA[<p>叶坠明时异，<br>花残料守空。<br>极寒觉地暖，<br>至寡悟杯兴。<br>有畏堪知死，<br>无诗不解风。<br>弱水三千任，<br>南柯一宿平。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;叶坠明时异，&lt;br&gt;花残料守空。&lt;br&gt;极寒觉地暖，&lt;br&gt;至寡悟杯兴。&lt;br&gt;有畏堪知死，&lt;br&gt;无诗不解风。&lt;br&gt;弱水三千任，&lt;br&gt;南柯一宿平。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>贺上海昊沧系统控制技术有限责任公司成立十周年</title>
+    <link href="http://yoursite.com/2015/01/04/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E8%B4%BA%E4%B8%8A%E6%B5%B7%E6%98%8A%E6%B2%A7%E7%B3%BB%E7%BB%9F%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E8%B4%A3%E4%BB%BB%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%8D%81%E5%91%A8%E5%B9%B4/"/>
+    <id>http://yoursite.com/2015/01/04/文学/古诗词/贺上海昊沧系统控制技术有限责任公司成立十周年/</id>
+    <published>2015-01-03T16:00:00.000Z</published>
+    <updated>2017-12-21T01:34:35.057Z</updated>
+    
+    <content type="html"><![CDATA[<p>笔纵蓝天抒大业，情牵浩宇贺新春。<br>净化污水臧大义，得来锦绣沁人心。<br>智能防汛功如海，工艺仿真技超群。<br>十年磨剑锋方露，跃马扬鞭日可寻。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;笔纵蓝天抒大业，情牵浩宇贺新春。&lt;br&gt;净化污水臧大义，得来锦绣沁人心。&lt;br&gt;智能防汛功如海，工艺仿真技超群。&lt;br&gt;十年磨剑锋方露，跃马扬鞭日可寻。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>赠小巢姐</title>
+    <link href="http://yoursite.com/2014/10/04/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E8%B5%A0%E5%B0%8F%E5%B7%A2%E5%A7%90/"/>
+    <id>http://yoursite.com/2014/10/04/文学/古诗词/赠小巢姐/</id>
+    <published>2014-10-03T16:00:00.000Z</published>
+    <updated>2017-12-20T09:21:24.822Z</updated>
+    
+    <content type="html"><![CDATA[<p>秀枝荏苒愈添香，浅笑红尘忆往常。<br>妍手绘花神韵染，奇思措句玉玑藏。<br>焉知明月撩窗影，可是青天唤远方。<br>好似断琴心外意，且于人海共流光。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;秀枝荏苒愈添香，浅笑红尘忆往常。&lt;br&gt;妍手绘花神韵染，奇思措句玉玑藏。&lt;br&gt;焉知明月撩窗影，可是青天唤远方。&lt;br&gt;好似断琴心外意，且于人海共流光。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>蝶恋花-其一</title>
+    <link href="http://yoursite.com/2014/07/16/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E8%9D%B6%E6%81%8B%E8%8A%B1-%E5%85%B6%E4%B8%80/"/>
+    <id>http://yoursite.com/2014/07/16/文学/古诗词/蝶恋花-其一/</id>
+    <published>2014-07-15T16:00:00.000Z</published>
+    <updated>2017-12-20T09:20:34.273Z</updated>
+    
+    <content type="html"><![CDATA[<p>雨过窗前山色暗，<br>陋室无眠，<br>忍顾星云散。<br>一寸香烛谁共剪？<br>枝头惊落平沙雁。<br>信步危楼空缱绻，<br>緑蚁频添，<br>夜静人翻乱。<br>笔下双形天地远，<br>唯观诗酒如初见。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;雨过窗前山色暗，&lt;br&gt;陋室无眠，&lt;br&gt;忍顾星云散。&lt;br&gt;一寸香烛谁共剪？&lt;br&gt;枝头惊落平沙雁。&lt;br&gt;信步危楼空缱绻，&lt;br&gt;緑蚁频添，&lt;br&gt;夜静人翻乱。&lt;br&gt;笔下双形天地远，&lt;br&gt;唯观诗酒如初见。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>只舟泛海</title>
+    <link href="http://yoursite.com/2014/06/05/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/%E5%8F%AA%E8%88%9F%E6%B3%9B%E6%B5%B7/"/>
+    <id>http://yoursite.com/2014/06/05/文学/随笔/只舟泛海/</id>
+    <published>2014-06-04T16:00:00.000Z</published>
+    <updated>2017-12-21T01:41:46.576Z</updated>
+    
+    <content type="html"><![CDATA[<p> （一）<br> 一滴水<br> 裹挟大地的粗犷的黄<br> 投入江河湖海<br> 在浪涛中起伏、在船桨里飞旋、在礁石上跳跃</p><p> 一抹云<br> 拥抱天空的细腻的蓝<br> 掩映日月星辰<br> 在阳光下舒展、在黑夜中漂泊、在狂风里聚散</p><p> 流淌、汇合、飞升<br> 漂泊、凝聚、降落<br> 它们演绎着不同的人生<br> 它们演绎着同样的精彩</p><p> （二）<br> 夜行而归的男人，借一泓流泻的清凉<br> 洗尽身上的污渍、也洗尽心中的烦忧<br> 怅然失落的男人，借一杯冰冷的火热<br> 灌醉疲惫的肉体、也灌醉疲惫的心灵</p><p> 凝固、流动、飞升<br> 火热、清凉、冰冷<br> 水是男人的父母、也是老师<br> 水是男人的朋友、也是恋人</p><p> （三）<br> 逐水而居，寻在水一方的伊人<br> 人不见，水空流<br> 不歇不辍的人<br> 在追赶岁月里遗落的曾经</p><p> 那是一种守候<br> 是一种由内而外的淡淡的企望<br> 就像花与碟<br> 云和月</p><p> （四）<br> 曾经沧海，止于一瞬<br> 山水不言，却已成绕<br> 指间和风，轻拂一段尘寰过往<br> 眉前墨画，消解万世迷离烟云</p><p> 一曲天籁，喧嚣了我的世界<br> 一纸山水，洞明了我的心扉<br> 乐山水者，山水乐之<br> 只舟泛海，愚者无忧</p><p> （五）<br> 重重叠叠黛山<br> 弯弯曲曲流水<br> 以山为岸的水<br> 汇聚成了深沉、博大的海洋</p><p> 一柄舟楫划破水面<br> 如在笙歌中远行<br> 心中流淌的<br> 是流动的、清凉的水</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; （一）&lt;br&gt; 一滴水&lt;br&gt; 裹挟大地的粗犷的黄&lt;br&gt; 投入江河湖海&lt;br&gt; 在浪涛中起伏、在船桨里飞旋、在礁石上跳跃&lt;/p&gt;
+&lt;p&gt; 一抹云&lt;br&gt; 拥抱天空的细腻的蓝&lt;br&gt; 掩映日月星辰&lt;br&gt; 在阳光下舒展、在黑夜中漂泊、在狂风里聚散&lt;/p&gt;
+&lt;p&gt; 流淌、汇
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>咏玻璃-七绝</title>
+    <link href="http://yoursite.com/2014/05/15/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E5%92%8F%E7%8E%BB%E7%92%83-%E4%B8%83%E7%BB%9D/"/>
+    <id>http://yoursite.com/2014/05/15/文学/古诗词/咏玻璃-七绝/</id>
+    <published>2014-05-14T16:00:00.000Z</published>
+    <updated>2017-12-20T09:17:40.632Z</updated>
+    
+    <content type="html"><![CDATA[<p>聚拢星尘为玛瑙，<br>敲开旷物便狂沙。<br>身为土屑飞千里，<br>敢做玻璃入万家。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;聚拢星尘为玛瑙，&lt;br&gt;敲开旷物便狂沙。&lt;br&gt;身为土屑飞千里，&lt;br&gt;敢做玻璃入万家。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人字歌</title>
+    <link href="http://yoursite.com/2014/04/26/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E4%BA%BA%E5%AD%97%E6%AD%8C/"/>
+    <id>http://yoursite.com/2014/04/26/文学/古诗词/人字歌/</id>
+    <published>2014-04-25T16:00:00.000Z</published>
+    <updated>2017-12-21T01:39:26.760Z</updated>
+    
+    <content type="html"><![CDATA[<p>人为撇捺须臾尽，<br>长大缘为志在肩。<br>双脚踏平遗恨地，<br>头悬一剑便为天。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;人为撇捺须臾尽，&lt;br&gt;长大缘为志在肩。&lt;br&gt;双脚踏平遗恨地，&lt;br&gt;头悬一剑便为天。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无忧即乐-其五</title>
+    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%97%A0%E5%BF%A7%E5%8D%B3%E4%B9%90-%E5%85%B6%E4%BA%94/"/>
+    <id>http://yoursite.com/2014/04/20/文学/古诗词/无忧即乐-其五/</id>
+    <published>2014-04-19T16:00:00.000Z</published>
+    <updated>2017-12-20T09:16:06.397Z</updated>
+    
+    <content type="html"><![CDATA[<p>静倚危楼性自空，情疏笔墨意难穷。<br>缺伊院落花携雨，失水池塘柳带风。<br>闲著诗词优雅处，忙敲代码快然中。<br>天涯过客形相似，世上行人趣不同。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;静倚危楼性自空，情疏笔墨意难穷。&lt;br&gt;缺伊院落花携雨，失水池塘柳带风。&lt;br&gt;闲著诗词优雅处，忙敲代码快然中。&lt;br&gt;天涯过客形相似，世上行人趣不同。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青天鉴</title>
+    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E9%9D%92%E5%A4%A9%E9%89%B4/"/>
+    <id>http://yoursite.com/2014/04/20/文学/古诗词/青天鉴/</id>
+    <published>2014-04-19T16:00:00.000Z</published>
+    <updated>2017-12-20T09:16:48.158Z</updated>
+    
+    <content type="html"><![CDATA[<p>中驿怀珏八百日，麻城坐井二十年。<br>门前众雁蹁跹过，岭外孤云浮去闲。<br>岂是寒梅甘寂寞，独学鸷鸟向长天。<br>青灯不避风霜路，老死犹能气满轩。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;中驿怀珏八百日，麻城坐井二十年。&lt;br&gt;门前众雁蹁跹过，岭外孤云浮去闲。&lt;br&gt;岂是寒梅甘寂寞，独学鸷鸟向长天。&lt;br&gt;青灯不避风霜路，老死犹能气满轩。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逆天谱</title>
+    <link href="http://yoursite.com/2013/08/15/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E9%80%86%E5%A4%A9%E8%B0%B1/"/>
+    <id>http://yoursite.com/2013/08/15/文学/古诗词/逆天谱/</id>
+    <published>2013-08-14T16:00:00.000Z</published>
+    <updated>2017-12-20T09:10:34.461Z</updated>
+    
+    <content type="html"><![CDATA[<p>月影消残酒未干，<br>一厢心事向谁言？<br>试问青山何处好？<br>倾绿蚁，吊朱颜。</p><p>雨过窗前山色暗，<br>空留沧海在胸前。<br>闲来无复日边梦？<br>待兵马，弄王权。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;月影消残酒未干，&lt;br&gt;一厢心事向谁言？&lt;br&gt;试问青山何处好？&lt;br&gt;倾绿蚁，吊朱颜。&lt;/p&gt;
+&lt;p&gt;雨过窗前山色暗，&lt;br&gt;空留沧海在胸前。&lt;br&gt;闲来无复日边梦？&lt;br&gt;待兵马，弄王权。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>清平乐-其一</title>
+    <link href="http://yoursite.com/2013/05/16/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%B8%85%E5%B9%B3%E4%B9%90-%E5%85%B6%E4%B8%80/"/>
+    <id>http://yoursite.com/2013/05/16/文学/古诗词/清平乐-其一/</id>
+    <published>2013-05-15T16:00:00.000Z</published>
+    <updated>2017-12-20T09:11:48.683Z</updated>
+    
+    <content type="html"><![CDATA[<p>停杯漫洒，<br>触动千均发。<br>只为那江山如画，<br>城外大军驻马，<br>龙滕椅上饮茶，<br>金銮殿外观花。<br>一战平息天下，<br>明朝又到天涯。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;停杯漫洒，&lt;br&gt;触动千均发。&lt;br&gt;只为那江山如画，&lt;br&gt;城外大军驻马，&lt;br&gt;龙滕椅上饮茶，&lt;br&gt;金銮殿外观花。&lt;br&gt;一战平息天下，&lt;br&gt;明朝又到天涯。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>站出一种风度，笑出一种境界</title>
+    <link href="http://yoursite.com/2013/04/05/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/%E7%AB%99%E5%87%BA%E4%B8%80%E7%A7%8D%E9%A3%8E%E5%BA%A6%EF%BC%8C%E7%AC%91%E5%87%BA%E4%B8%80%E7%A7%8D%E5%A2%83%E7%95%8C/"/>
+    <id>http://yoursite.com/2013/04/05/文学/随笔/站出一种风度，笑出一种境界/</id>
+    <published>2013-04-04T16:00:00.000Z</published>
+    <updated>2017-12-21T01:46:14.840Z</updated>
+    
+    <content type="html"><![CDATA[<p>倚栏独眺，看着夜的黑一层层铺满我的窗台。脑际一闪而过的念想，如天际存留的最后一丝光线，瞬间膨胀、扩散，然后被稀释成一种恒久的空白。时间，被一点一点的蚕食殆尽。风催繁华落，独留人怅然。</p><p>摊开手掌，明了一个人的过去。掌纹深深浅浅、重重叠叠，来路坎坎坷坷、曲曲折折。五指间的间隙，是一口填不满的陷阱。雨在掌纹中流淌，风从五指间吹过。我们紧握小拳来到人世，我们摊开手掌离开亲友。手掌一开一合，便完成了其一生的使命。剩下的，只有关于你的光学投影和化学反应。</p><p>擦亮一块玻璃，努力向外望去，强烈的光芒是否会灼伤双眼？</p><p>戴上耳机，电信号转化成的一种和谐的音波，回旋在我空旷的城市。今夜，我让音乐涤荡我的心。</p><p>蓦然间，忆起从前的林间放歌、席上挥毫。不经意间发现，那种状态已经渐行渐远。而现在，不正是以前汲汲以求的么。告别，正是最完美的走向；放下，正是最深情的拥抱。</p><p>将最豪迈的歌唱击打在键盘上，将最飘逸的诗句凝练成代码一行又一行。比诗句晦涩，让读懂它的人愈加稀少。比诗句通俗，在你精确地解读下无有二义。</p><p>敲一段代码，就是敲响一首梅花三弄，婉转动人。敲一段代码，就是敲响一首生命交响曲，激烈悲壮。让玲花点燃我疲沓的激情，让黄磊托起我站立的高度，让张宇刺激我麻木的神经，让腾格尔惊醒我昏睡的大脑。</p><p>做一个追求极致的人。</p><p>人之一生，何其短暂，何其渺小。站在宇宙的高度俯瞰，我们就是一粒微细的粉尘。风来雨来，瞬间湮灭。</p><p>一生一定要做点什么，难以想象一个人的一生会仅仅和大自然进物质交换和能量交换。在物质的盈缺中进化你的思想，在意识的合决中升华你的灵魂。</p><p>世界上有两种人，羡慕别人的人，让别人羡慕的人。</p><p>我们的的 轨迹，就是从羡慕别人的人指向让别人羡慕的人。</p><p>穷究一个问题的本质，你就掌握了一万个问题的答案。</p><p>学习，不是对知识点进行一次简单的遍历。机器能做到的让机器去做，你只需要归纳一条公式，总结一个道理。当你真的明白了，你就会豁然开朗。</p><p>双脚重踩在大地上，头颅轻放在云端。<br>让狭窄的心脏映射四海的辽阔，让平静的面庞抖落日月的光芒。</p><p>站，要站出一种风度；笑，要笑出一种境界。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;倚栏独眺，看着夜的黑一层层铺满我的窗台。脑际一闪而过的念想，如天际存留的最后一丝光线，瞬间膨胀、扩散，然后被稀释成一种恒久的空白。时间，被一点一点的蚕食殆尽。风催繁华落，独留人怅然。&lt;/p&gt;
+&lt;p&gt;摊开手掌，明了一个人的过去。掌纹深深浅浅、重重叠叠，来路坎坎坷坷、曲曲折折。
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>以我眼，看中国（思修课演讲稿）</title>
+    <link href="http://yoursite.com/2013/03/15/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/%E4%BB%A5%E6%88%91%E7%9C%BC%EF%BC%8C%E7%9C%8B%E4%B8%AD%E5%9B%BD/"/>
+    <id>http://yoursite.com/2013/03/15/文学/随笔/以我眼，看中国/</id>
+    <published>2013-03-14T16:00:00.000Z</published>
+    <updated>2017-12-21T01:42:48.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>  (1)<br> 我们都有一个共同的名字，叫做中华儿女<br> 我们都有一个响亮的称号，叫做炎黄子孙<br> 五千年的历史文明是我们休憩的宝地<br> 九百六十万平方公里的版图是我们成长的摇篮</p><p> 我们的骨肉中隐藏着泰山傲岸的身影<br> 我们的血液里翻滚着长江激荡的脾性<br> 老子以五千言立道，我们便有了广阔的天空<br> 孔子以二十篇弘儒，我们便有了坚实的大地 </p><p> 尘雾千里，历史在我眼前朦胧地呈现：<br> 汉张骞出使西域，开通丝绸之路，那是何等的繁荣<br> 唐鉴真东渡日本，促进中日邦交，那是何等的强盛<br> 明郑和远下西洋，盛况空前，那是何等的豪迈</p><p> （2）<br> 截取一段时光，打磨成一面明镜<br> 明镜指示的方向，是一种残忍的真实</p><p> 我看见鸦片悄无声息的爬上了中国人的烟斗<br> 我看见数不清的条约压在中国人的心头<br> 我看见万园之园 在中国人最疼痛的地方付之一炬<br> 我看见原本完整的土地在中国人的眼中被践踏得千疮百孔、残缺不全</p><p> 究竟什么缘故？<br> 在那段诡谲奇变的历史岁月中，到底发生了什么？<br> 明镜无语</p><p> 当社稷危在旦夕，一个个鲜活的面容出现在我们的面前<br> 林则徐来了、张之洞来了…<br> 梁启超来了、谭嗣同来了…<br> 孙中山来了、黄兴来了…<br> 中国有救了</p><p> （3）</p><p> 时光渐远，历史残存的讯息，是另一种<br> 悲壮的鲜红<br> 我们只得在一页页史书中找寻<br> 他们的足迹</p><p> 圣人虽故，大道犹存，星星之火传不尽<br> 旧史既去，新史当书，纷繁故事看无穷</p><p> 在如今没有硝烟的战场上，是一场又一场生与死的博弈<br> 但我们丝毫不会退<br> 因为我们都有一个共同的名字，叫做中华儿女<br> 因为我们都有一个响亮的称号，叫做炎黄子孙</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  (1)&lt;br&gt; 我们都有一个共同的名字，叫做中华儿女&lt;br&gt; 我们都有一个响亮的称号，叫做炎黄子孙&lt;br&gt; 五千年的历史文明是我们休憩的宝地&lt;br&gt; 九百六十万平方公里的版图是我们成长的摇篮&lt;/p&gt;
+&lt;p&gt; 我们的骨肉中隐藏着泰山傲岸的身影&lt;br&gt; 我们的血液里翻滚着长
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无忧即乐-其四</title>
+    <link href="http://yoursite.com/2013/01/09/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%97%A0%E5%BF%A7%E5%8D%B3%E4%B9%90-%E5%85%B6%E5%9B%9B/"/>
+    <id>http://yoursite.com/2013/01/09/文学/古诗词/无忧即乐-其四/</id>
+    <published>2013-01-08T16:00:00.000Z</published>
+    <updated>2017-12-20T09:15:09.298Z</updated>
+    
+    <content type="html"><![CDATA[<p>频寻燕子未及春，又见谁家扣冢门？<br>百日凭鐏花似酒，十年面壁影如人。<br>霜结始晓天无泪，梦破方知月有痕。<br>卧侧双形恩爱浅，池旁一木雪花深。 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;频寻燕子未及春，又见谁家扣冢门？&lt;br&gt;百日凭鐏花似酒，十年面壁影如人。&lt;br&gt;霜结始晓天无泪，梦破方知月有痕。&lt;br&gt;卧侧双形恩爱浅，池旁一木雪花深。 &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+    
+      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="古诗词" scheme="http://yoursite.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+</feed>
