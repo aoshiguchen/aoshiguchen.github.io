@@ -354,32 +354,35 @@ function getShortUrlCallback(data){
     paste(data.url);
   }else{
     console.log('req error:',data.err);
-    paste(data.err);
+    // paste(data.err);
   }
 }
 
 function paste(text){
   console.log('paste',text);
-  var textarea = document.createElement("textarea");
-  textarea.style.position = 'fixed';
-  textarea.style.top = 500;
-  textarea.style.left = 500;
-  textarea.style.border = 'none';
-  textarea.style.outline = 'none';
-  textarea.style.resize = 'none';
-  textarea.style.background = 'transparent';
-  textarea.style.color = 'transparent'; 
+  if(!prompt("点击确定，或者按Ctrl+C复制链接",text)){
+    return;
+  }
+  // var textarea = document.createElement("textarea");
+  // textarea.style.position = 'fixed';
+  // textarea.style.top = 500;
+  // textarea.style.left = 500;
+  // textarea.style.border = 'none';
+  // textarea.style.outline = 'none';
+  // textarea.style.resize = 'none';
+  // textarea.style.background = 'transparent';
+  // textarea.style.color = 'transparent'; 
 
-  textarea.value = text;
-  document.body.appendChild(textarea);
-  textarea.select();
+  // textarea.value = text;
+  // document.body.appendChild(textarea);
+  // textarea.select();
   try {
-    const msg = document.execCommand('copy') ? '成功' : '失败';
+    const msg = document.execCommand('copy') ? '成功' : '失败'; 
     console.log(msg);
   } catch (err) {
     console.log('不支持复制', err);
   }
-  document.body.removeChild(textarea);
+  // document.body.removeChild(textarea);
 }
 
 me.copyPageLink = function(){
