@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[javaweb获取客户端真实ip]]></title>
+    <url>%2F2017%2F12%2F22%2F%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%2Fjava%2Fjavaweb%E8%8E%B7%E5%8F%96%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9C%9F%E5%AE%9Eip%2F</url>
+    <content type="text"><![CDATA[在安全性要求较高的web项目中，我们经常有这样的需求: 黑名单：禁止指定ip访问。 白名单：允许指定ip访问。 根据ip追踪恶意入侵系统者。 在java中我们通常可以这样获取客户端ip地址：1request.getRemoteAddr() 但是这个方法有个弊端，就是如果对方使用了反向代理，那么这个方法获取到的永远都是反向代理服务器的ip，而并非用户的真实ip。这样也能达到禁止访问的目的，但是对于已经发生的恶意入侵，我们却无法定位到真实的用户主机。 当你遇到类似的问题时，那么下面的代码就能够很好的帮助你。1234567891011121314151617public static String getClientIP(HttpServletRequest request) &#123; String ip = request.getHeader("X-Forwarded-For"); if (StringUtils.isNotEmpty(ip) &amp;&amp; !"unKnown".equalsIgnoreCase(ip)) &#123; // 多次反向代理后会有多个ip值，第一个ip才是真实ip int index = ip.indexOf(","); if (index != -1) &#123; return ip.substring(0, index); &#125; else &#123; return ip; &#125; &#125; ip = request.getHeader("X-Real-IP"); if (StringUtils.isNotEmpty(ip) &amp;&amp; !"unKnown".equalsIgnoreCase(ip)) &#123; return ip; &#125; return request.getRemoteAddr();&#125;]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[msi文件安装错误]]></title>
     <url>%2F2017%2F12%2F21%2F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%2Fmsi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF%2F</url>
     <content type="text"><![CDATA[1、错误代码为2502、2503的情况下，用如下方法解决 首先用管理员身份打开命令行，然后用如下命令进行安装：msiexec /package 路径]]></content>
@@ -10,21 +22,6 @@
       <tags>
         <tag>系统软件</tag>
         <tag>安装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[用java实现一个简单的深度神经网络]]></title>
-    <url>%2F2017%2F12%2F21%2F%E7%AE%97%E6%B3%95%2F%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%2F0.0.1%2Fjava%2F%E7%94%A8java%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%2F</url>
-    <content type="text"><![CDATA[初识神经网络简介 硬编码的智能：人工智能早期，用以实现专家系统。特点，实现难度高，并且难以适应变化。 机器学习：程序本身不编码实现任何解决具体问题的方法，而是模仿生物的进化、认知，能够不断地从周围环境中获取数据进行学习。特点：实现难度相较于上一个简单，但是需要大量数据，训练的方法也很重要，能够适应变化解决各种新的问题。 算法原理 外界信号通过你的眼睛、鼻子、舌头等等一系列感知器官（输入）捕获后传入大脑皮层（这个我也不清除，先假装是的），大脑皮层是第一层神经元，经过第一层处理后，然后传入第二层、第三层，最终经过n层处理后得到结果，所以我们能够对纷繁复杂的世界产生正确的认知。 深度神经网络算法，就是基于人脑认知事务进行学习的这一特性的算法。初始数据经由多层神经元的计算后得到输出，刚开始时可能会有较大的误差，这时就需要我们的训练。 训练分为监督式训练、无监督训练。这里我们讲的是监督式训练。 监督式训练：给出一组样本数据，以及对应的正确期望结果。让神经网络不断学习，神经网络会在学习的过程中不断地矫正神经元连接的突触的权值、动量系数等等。理论上经过若干次的训练后，这个神经网络就会调整为一个最佳的情况，这时，对给定的输入，能够在比较大的概率下给出正确的结果。 算法实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071import java.util.Random;public class BpDeep&#123; public double[][] layer;//神经网络各层节点 public double[][] layerErr;//神经网络各节点误差 public double[][][] layer_weight;//各层节点权重 public double[][][] layer_weight_delta;//各层节点权重动量 public double mobp;//动量系数 public double rate;//学习系数 public BpDeep(int[] layernum, double rate, double mobp)&#123; this.mobp = mobp; this.rate = rate; layer = new double[layernum.length][]; layerErr = new double[layernum.length][]; layer_weight = new double[layernum.length][][]; layer_weight_delta = new double[layernum.length][][]; Random random = new Random(); for(int l=0;l&lt;layernum.length;l++)&#123; layer[l]=new double[layernum[l]]; layerErr[l]=new double[layernum[l]]; if(l+1&lt;layernum.length)&#123; layer_weight[l]=new double[layernum[l]+1][layernum[l+1]]; layer_weight_delta[l]=new double[layernum[l]+1][layernum[l+1]]; for(int j=0;j&lt;layernum[l]+1;j++) for(int i=0;i&lt;layernum[l+1];i++) layer_weight[l][j][i]=random.nextDouble();//随机初始化权重 &#125; &#125; &#125; //逐层向前计算输出 public double[] computeOut(double[] in)&#123; for(int l=1;l&lt;layer.length;l++)&#123; for(int j=0;j&lt;layer[l].length;j++)&#123; double z=layer_weight[l-1][layer[l-1].length][j]; for(int i=0;i&lt;layer[l-1].length;i++)&#123; layer[l-1][i]=l==1?in[i]:layer[l-1][i]; z+=layer_weight[l-1][i][j]*layer[l-1][i]; &#125; layer[l][j]=1/(1+Math.exp(-z)); &#125; &#125; return layer[layer.length-1]; &#125; //逐层反向计算误差并修改权重 public void updateWeight(double[] tar)&#123; int l=layer.length-1; for(int j=0;j&lt;layerErr[l].length;j++) layerErr[l][j]=layer[l][j]*(1-layer[l][j])*(tar[j]-layer[l][j]); while(l--&gt;0)&#123; for(int j=0;j&lt;layerErr[l].length;j++)&#123; double z = 0.0; for(int i=0;i&lt;layerErr[l+1].length;i++)&#123; z=z+l&gt;0?layerErr[l+1][i]*layer_weight[l][j][i]:0; layer_weight_delta[l][j][i]= mobp*layer_weight_delta[l][j][i]+rate*layerErr[l+1][i]*layer[l][j];//隐含层动量调整 layer_weight[l][j][i]+=layer_weight_delta[l][j][i];//隐含层权重调整 if(j==layerErr[l].length-1)&#123; layer_weight_delta[l][j+1][i]= mobp*layer_weight_delta[l][j+1][i]+rate*layerErr[l+1][i];//截距动量调整 layer_weight[l][j+1][i]+=layer_weight_delta[l][j+1][i];//截距权重调整 &#125; &#125; layerErr[l][j]=z*layer[l][j]*(1-layer[l][j]);//记录误差 &#125; &#125; &#125; public void train(double[] in, double[] tar)&#123; double[] out = computeOut(in); updateWeight(tar); &#125;&#125; 测试112345678910111213141516171819202122232425262728import java.util.Arrays;public class BpDeepTest&#123; public static void main(String[] args)&#123; //初始化神经网络的基本配置 BpDeep bp = new BpDeep(new int[]&#123;2,10,2&#125;, 0.15, 0.8); //BpDeep bp = new BpDeep(new int[]&#123;2,10,1&#125;, 0.15, 0.8); //设置样本数据 double[][] data = new double[][]&#123;&#123;1,2&#125;,&#123;2,2&#125;,&#123;1,1&#125;,&#123;2,1&#125;&#125;; //设置目标数据 double[][] target = new double[][]&#123;&#123;1,0&#125;,&#123;0,1&#125;,&#123;0,1&#125;,&#123;1,0&#125;&#125;; //double[][] target = new double[][]&#123;&#123;1&#125;,&#123;0&#125;,&#123;0&#125;,&#123;1&#125;&#125;; //迭代训练 for(int n=0;n&lt;5000;n++) for(int i=0;i&lt;data.length;i++) bp.train(data[i], target[i]); for(int j=0;j&lt;data.length;j++)&#123; double[] result = bp.computeOut(data[j]); System.out.println(Arrays.toString(data[j])+":"+Arrays.toString(result)); &#125; double[] x = new double[]&#123;3,1&#125;; double[] result = bp.computeOut(x); System.out.println(Arrays.toString(x)+":"+Arrays.toString(result)); &#125;&#125; 测试2123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354import java.util.*;import java.io.*;public class BpDeepTest2&#123; public static void main(String[] args) throws Exception&#123; BpDeep bp = new BpDeep(new int[]&#123;1,20,20,20,1&#125;, 0.4, 0.001); double[][] data = getData(); for(int n=0;n&lt;1000;n++) for(int i=0;i&lt;data.length;i++) bp.train(new double[]&#123;data[i][0]&#125;, new double[]&#123;data[i][1]&#125;); System.out.println("训练结果:"); double rate = 0; int successCount = 0; for(int j=0;j&lt;data.length;j++)&#123; double[] result = bp.computeOut(data[j]); System.out.println(data[j][0] + ":" + result[0]); if(((int)(result[0]*2)) == data[j][1])&#123; successCount++; &#125; &#125; rate = (successCount * 1.0) / data.length; System.out.printf("rate:%.2f\n",rate); System.out.println("验证:"); double[] x = new double[]&#123;201,202,203,204,205&#125;; for(int j=0;j&lt;x.length;j++)&#123; double[] result = bp.computeOut(new double[]&#123;x[j]&#125;); System.out.println(x[j] + ":" + result[0]); &#125; &#125; public static double[][] getData() throws Exception&#123; List&lt;Double[]&gt; list = new ArrayList&lt;Double[]&gt;(); Scanner scanner = new Scanner(new FileInputStream("data.txt")); while(scanner.hasNext())&#123; double a = scanner.nextDouble(); double b = scanner.nextDouble(); list.add(new Double[]&#123;a,b&#125;); &#125; double[][] result = new double[list.size()][3]; for(int i = 0;i &lt; list.size();i++)&#123; result[i][0] = list.get(i)[0]; result[i][1] = list.get(i)[1]; &#125; return result; &#125;&#125; data.txt中的数据如下：0 11 02 13 04 15 06 17 08 19 010 111 012 113 014 115 016 117 018 119 020 1 运行演示示例1问题：我们需要将笛卡尔坐标系中的点按照y=x分界线，分成两类。 样本数据：{1,2},{2,2},{1,1},{2,1}期望数据：{1,0},{0,1},{0,1},{1,0} 每组输入数据个数为2，所以第一层神经元的个数为2每组对应输出结果个数为2，所以最后一层神经元个数为2 {1,0}、{0,1} 分别对应两种结果。 代码简单解释BpDeep bp = new BpDeep(new int[]{2,10,2}, 0.15, 0.8);这是构造一个深度神经网络。第一个参数为一个一维数组，数组的长度为3，表示这个神经网络一共3层。第一个元素为2表示第一层2个神经元，最后一个元素为2，表示最后一层2个神经元。后面的0.15、0.8是动量系数还有啥的，现在说你们也不懂，先不说了，这两个数字可以随便改。0到1之间的一个数字，对算法的学习效率有些影响，不影响逻辑。 后面的样本数据和目标数据就不说了，我们直接看结果。 示例运行这四个是训练的结果：[1.0, 2.0]:[0.9792365424853283, 0.020600382812002088]上面对应的样本为：{1,2} {1,0}[2.0, 2.0]:[0.02256564436382444, 0.9773361523239155]上面对应的样本为：{2,2} {0,1}[1.0, 1.0]:[0.016761474334048444, 0.9837176729362672]上面对应的样本为：{1,1} {0,1}[2.0, 1.0]:[0.9793917240613336, 0.02048522092272838]上面对应的样本为：{2,1} {1,0} 这一个是训练结束后，测试的数据：[3.0, 1.0]:[0.9899489337264226, 0.009920676075267004]所以得到结果：{3,1}属于分类：{1,0} 示例2问题：将整数划分为正数和负数两类。暂不考虑0，样本数据如下：-5 0-4 0-3 0-2 0-1 01 12 13 14 15 1 负数输出0，整数输出1。训练完成后，验证数据如下：100:1-10:063:150:1-9:075:155:163:1 进阶方向 参数调优：本示例中并没有测试动量系数和学习稀疏的不同会给学习效率带来何种影响，但这个事实上决定着学习结果的效率。 激活函数：还有就是算法中使用的激活函数为：1/(1+Math.exp(-z))。这是目前业界用的非常广泛的一个激活函数，这个函数自己可以随便换，不同的激活函数对学习也有重大的影响。设计不好的激活函数，可能导致极难快速收敛。 输入输出的定义：任何数据都可以归结为一个一维数组信号，所有的分类结果都可以归结为一组0和1组成的一维数组。 在示例1中，将两个类别定义为{1,0} {0,1}在示例2中，将两个类别定义为0 1这个自己可以视情况而定，无有定解。 神经网络的神经元层数、个数：从上我们可以看到，决定第一层神经元数量的是输入数据，决定最后一层神经元数量的是输出数据。而中间的神经元层数、个数自己可以视情况而定，没有理论证明多少层更合适。这个需要自己不断尝试调优。一个基本的方向是，问题越复杂，需要的神经元数量、层数会越多。因此计算的效率也会越低 本算法是一个简化版的深度学习算法，非常简短。要解决稍复杂的问题，可能训练特别耗时，这只是一个单机实现，如果用上云计算，它的优势才能充分的体现出来。]]></content>
-      <categories>
-        <category>算法</category>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>java</tag>
-        <tag>深度学习</tag>
-        <tag>神经网络</tag>
       </tags>
   </entry>
   <entry>
@@ -44,7 +41,7 @@
   <entry>
     <title><![CDATA[插件]]></title>
     <url>%2F2017%2F12%2F21%2F%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%2Feclipse%2F%E6%8F%92%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[drools： http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/]]></content>
+    <content type="text"><![CDATA[drools： http://download.jboss.org/drools/release/5.5.0.Final/org.drools.updatesite/Groovy: http://dist.springsource.org/release/GRECLIPSE/e4.3/]]></content>
       <categories>
         <category>开发工具</category>
         <category>eclipse</category>
@@ -53,6 +50,21 @@
         <tag>开发工具</tag>
         <tag>插件</tag>
         <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用java实现一个简单的深度神经网络]]></title>
+    <url>%2F2017%2F12%2F21%2F%E7%AE%97%E6%B3%95%2F%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%2F0.0.1%2Fjava%2F%E7%94%A8java%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[初识神经网络简介 硬编码的智能：人工智能早期，用以实现专家系统。特点，实现难度高，并且难以适应变化。 机器学习：程序本身不编码实现任何解决具体问题的方法，而是模仿生物的进化、认知，能够不断地从周围环境中获取数据进行学习。特点：实现难度相较于上一个简单，但是需要大量数据，训练的方法也很重要，能够适应变化解决各种新的问题。 算法原理 外界信号通过你的眼睛、鼻子、舌头等等一系列感知器官（输入）捕获后传入大脑皮层（这个我也不清除，先假装是的），大脑皮层是第一层神经元，经过第一层处理后，然后传入第二层、第三层，最终经过n层处理后得到结果，所以我们能够对纷繁复杂的世界产生正确的认知。 深度神经网络算法，就是基于人脑认知事务进行学习的这一特性的算法。初始数据经由多层神经元的计算后得到输出，刚开始时可能会有较大的误差，这时就需要我们的训练。 训练分为监督式训练、无监督训练。这里我们讲的是监督式训练。 监督式训练：给出一组样本数据，以及对应的正确期望结果。让神经网络不断学习，神经网络会在学习的过程中不断地矫正神经元连接的突触的权值、动量系数等等。理论上经过若干次的训练后，这个神经网络就会调整为一个最佳的情况，这时，对给定的输入，能够在比较大的概率下给出正确的结果。 算法实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071import java.util.Random;public class BpDeep&#123; public double[][] layer;//神经网络各层节点 public double[][] layerErr;//神经网络各节点误差 public double[][][] layer_weight;//各层节点权重 public double[][][] layer_weight_delta;//各层节点权重动量 public double mobp;//动量系数 public double rate;//学习系数 public BpDeep(int[] layernum, double rate, double mobp)&#123; this.mobp = mobp; this.rate = rate; layer = new double[layernum.length][]; layerErr = new double[layernum.length][]; layer_weight = new double[layernum.length][][]; layer_weight_delta = new double[layernum.length][][]; Random random = new Random(); for(int l=0;l&lt;layernum.length;l++)&#123; layer[l]=new double[layernum[l]]; layerErr[l]=new double[layernum[l]]; if(l+1&lt;layernum.length)&#123; layer_weight[l]=new double[layernum[l]+1][layernum[l+1]]; layer_weight_delta[l]=new double[layernum[l]+1][layernum[l+1]]; for(int j=0;j&lt;layernum[l]+1;j++) for(int i=0;i&lt;layernum[l+1];i++) layer_weight[l][j][i]=random.nextDouble();//随机初始化权重 &#125; &#125; &#125; //逐层向前计算输出 public double[] computeOut(double[] in)&#123; for(int l=1;l&lt;layer.length;l++)&#123; for(int j=0;j&lt;layer[l].length;j++)&#123; double z=layer_weight[l-1][layer[l-1].length][j]; for(int i=0;i&lt;layer[l-1].length;i++)&#123; layer[l-1][i]=l==1?in[i]:layer[l-1][i]; z+=layer_weight[l-1][i][j]*layer[l-1][i]; &#125; layer[l][j]=1/(1+Math.exp(-z)); &#125; &#125; return layer[layer.length-1]; &#125; //逐层反向计算误差并修改权重 public void updateWeight(double[] tar)&#123; int l=layer.length-1; for(int j=0;j&lt;layerErr[l].length;j++) layerErr[l][j]=layer[l][j]*(1-layer[l][j])*(tar[j]-layer[l][j]); while(l--&gt;0)&#123; for(int j=0;j&lt;layerErr[l].length;j++)&#123; double z = 0.0; for(int i=0;i&lt;layerErr[l+1].length;i++)&#123; z=z+l&gt;0?layerErr[l+1][i]*layer_weight[l][j][i]:0; layer_weight_delta[l][j][i]= mobp*layer_weight_delta[l][j][i]+rate*layerErr[l+1][i]*layer[l][j];//隐含层动量调整 layer_weight[l][j][i]+=layer_weight_delta[l][j][i];//隐含层权重调整 if(j==layerErr[l].length-1)&#123; layer_weight_delta[l][j+1][i]= mobp*layer_weight_delta[l][j+1][i]+rate*layerErr[l+1][i];//截距动量调整 layer_weight[l][j+1][i]+=layer_weight_delta[l][j+1][i];//截距权重调整 &#125; &#125; layerErr[l][j]=z*layer[l][j]*(1-layer[l][j]);//记录误差 &#125; &#125; &#125; public void train(double[] in, double[] tar)&#123; double[] out = computeOut(in); updateWeight(tar); &#125;&#125; 测试112345678910111213141516171819202122232425262728import java.util.Arrays;public class BpDeepTest&#123; public static void main(String[] args)&#123; //初始化神经网络的基本配置 BpDeep bp = new BpDeep(new int[]&#123;2,10,2&#125;, 0.15, 0.8); //BpDeep bp = new BpDeep(new int[]&#123;2,10,1&#125;, 0.15, 0.8); //设置样本数据 double[][] data = new double[][]&#123;&#123;1,2&#125;,&#123;2,2&#125;,&#123;1,1&#125;,&#123;2,1&#125;&#125;; //设置目标数据 double[][] target = new double[][]&#123;&#123;1,0&#125;,&#123;0,1&#125;,&#123;0,1&#125;,&#123;1,0&#125;&#125;; //double[][] target = new double[][]&#123;&#123;1&#125;,&#123;0&#125;,&#123;0&#125;,&#123;1&#125;&#125;; //迭代训练 for(int n=0;n&lt;5000;n++) for(int i=0;i&lt;data.length;i++) bp.train(data[i], target[i]); for(int j=0;j&lt;data.length;j++)&#123; double[] result = bp.computeOut(data[j]); System.out.println(Arrays.toString(data[j])+":"+Arrays.toString(result)); &#125; double[] x = new double[]&#123;3,1&#125;; double[] result = bp.computeOut(x); System.out.println(Arrays.toString(x)+":"+Arrays.toString(result)); &#125;&#125; 测试2123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354import java.util.*;import java.io.*;public class BpDeepTest2&#123; public static void main(String[] args) throws Exception&#123; BpDeep bp = new BpDeep(new int[]&#123;1,20,20,20,1&#125;, 0.4, 0.001); double[][] data = getData(); for(int n=0;n&lt;1000;n++) for(int i=0;i&lt;data.length;i++) bp.train(new double[]&#123;data[i][0]&#125;, new double[]&#123;data[i][1]&#125;); System.out.println("训练结果:"); double rate = 0; int successCount = 0; for(int j=0;j&lt;data.length;j++)&#123; double[] result = bp.computeOut(data[j]); System.out.println(data[j][0] + ":" + result[0]); if(((int)(result[0]*2)) == data[j][1])&#123; successCount++; &#125; &#125; rate = (successCount * 1.0) / data.length; System.out.printf("rate:%.2f\n",rate); System.out.println("验证:"); double[] x = new double[]&#123;201,202,203,204,205&#125;; for(int j=0;j&lt;x.length;j++)&#123; double[] result = bp.computeOut(new double[]&#123;x[j]&#125;); System.out.println(x[j] + ":" + result[0]); &#125; &#125; public static double[][] getData() throws Exception&#123; List&lt;Double[]&gt; list = new ArrayList&lt;Double[]&gt;(); Scanner scanner = new Scanner(new FileInputStream("data.txt")); while(scanner.hasNext())&#123; double a = scanner.nextDouble(); double b = scanner.nextDouble(); list.add(new Double[]&#123;a,b&#125;); &#125; double[][] result = new double[list.size()][3]; for(int i = 0;i &lt; list.size();i++)&#123; result[i][0] = list.get(i)[0]; result[i][1] = list.get(i)[1]; &#125; return result; &#125;&#125; data.txt中的数据如下：0 11 02 13 04 15 06 17 08 19 010 111 012 113 014 115 016 117 018 119 020 1 运行演示示例1问题：我们需要将笛卡尔坐标系中的点按照y=x分界线，分成两类。 样本数据：{1,2},{2,2},{1,1},{2,1}期望数据：{1,0},{0,1},{0,1},{1,0} 每组输入数据个数为2，所以第一层神经元的个数为2每组对应输出结果个数为2，所以最后一层神经元个数为2 {1,0}、{0,1} 分别对应两种结果。 代码简单解释BpDeep bp = new BpDeep(new int[]{2,10,2}, 0.15, 0.8);这是构造一个深度神经网络。第一个参数为一个一维数组，数组的长度为3，表示这个神经网络一共3层。第一个元素为2表示第一层2个神经元，最后一个元素为2，表示最后一层2个神经元。后面的0.15、0.8是动量系数还有啥的，现在说你们也不懂，先不说了，这两个数字可以随便改。0到1之间的一个数字，对算法的学习效率有些影响，不影响逻辑。 后面的样本数据和目标数据就不说了，我们直接看结果。 示例运行这四个是训练的结果：[1.0, 2.0]:[0.9792365424853283, 0.020600382812002088]上面对应的样本为：{1,2} {1,0}[2.0, 2.0]:[0.02256564436382444, 0.9773361523239155]上面对应的样本为：{2,2} {0,1}[1.0, 1.0]:[0.016761474334048444, 0.9837176729362672]上面对应的样本为：{1,1} {0,1}[2.0, 1.0]:[0.9793917240613336, 0.02048522092272838]上面对应的样本为：{2,1} {1,0} 这一个是训练结束后，测试的数据：[3.0, 1.0]:[0.9899489337264226, 0.009920676075267004]所以得到结果：{3,1}属于分类：{1,0} 示例2问题：将整数划分为正数和负数两类。暂不考虑0，样本数据如下：-5 0-4 0-3 0-2 0-1 01 12 13 14 15 1 负数输出0，整数输出1。训练完成后，验证数据如下：100:1-10:063:150:1-9:075:155:163:1 进阶方向 参数调优：本示例中并没有测试动量系数和学习稀疏的不同会给学习效率带来何种影响，但这个事实上决定着学习结果的效率。 激活函数：还有就是算法中使用的激活函数为：1/(1+Math.exp(-z))。这是目前业界用的非常广泛的一个激活函数，这个函数自己可以随便换，不同的激活函数对学习也有重大的影响。设计不好的激活函数，可能导致极难快速收敛。 输入输出的定义：任何数据都可以归结为一个一维数组信号，所有的分类结果都可以归结为一组0和1组成的一维数组。 在示例1中，将两个类别定义为{1,0} {0,1}在示例2中，将两个类别定义为0 1这个自己可以视情况而定，无有定解。 神经网络的神经元层数、个数：从上我们可以看到，决定第一层神经元数量的是输入数据，决定最后一层神经元数量的是输出数据。而中间的神经元层数、个数自己可以视情况而定，没有理论证明多少层更合适。这个需要自己不断尝试调优。一个基本的方向是，问题越复杂，需要的神经元数量、层数会越多。因此计算的效率也会越低 本算法是一个简化版的深度学习算法，非常简短。要解决稍复杂的问题，可能训练特别耗时，这只是一个单机实现，如果用上云计算，它的优势才能充分的体现出来。]]></content>
+      <categories>
+        <category>算法</category>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>java</tag>
+        <tag>深度学习</tag>
+        <tag>神经网络</tag>
       </tags>
   </entry>
   <entry>
@@ -434,6 +446,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[问天-其一]]></title>
+    <url>%2F2012%2F04%2F27%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E9%97%AE%E5%A4%A9-%E5%85%B6%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[尽饮千江酒，神飞百尺楼。弗如山吐秀，何必水藏忧。笛韵盈轩宇，星辉落晚舟。难及天子第，歆子应何求？]]></content>
+      <categories>
+        <category>文学</category>
+        <category>古诗词</category>
+      </categories>
+      <tags>
+        <tag>文学</tag>
+        <tag>古诗词</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[卜算子-其一]]></title>
     <url>%2F2012%2F04%2F27%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E5%8D%9C%E7%AE%97%E5%AD%90-%E5%85%B6%E4%B8%80%2F</url>
     <content type="text"><![CDATA[静野乱花飞，陋室凉风透。拟向江楼凑一阕，已是黄昏后。日久未成吟，徒使人消瘦。待到新词拼就时，泪水湿衣袖。]]></content>
@@ -450,19 +475,6 @@
     <title><![CDATA[卜算子-其二]]></title>
     <url>%2F2012%2F04%2F27%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E5%8D%9C%E7%AE%97%E5%AD%90-%E5%85%B6%E4%BA%8C%2F</url>
     <content type="text"><![CDATA[卜算子（其二。觅新欢）才见桃花开，又见桃花瘦。得意春风归去疾，万事难长久。早晚觅新欢，妾泪空盈袖。不见当年未嫁时，絮语黄昏后。]]></content>
-      <categories>
-        <category>文学</category>
-        <category>古诗词</category>
-      </categories>
-      <tags>
-        <tag>文学</tag>
-        <tag>古诗词</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[问天-其一]]></title>
-    <url>%2F2012%2F04%2F27%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E9%97%AE%E5%A4%A9-%E5%85%B6%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[尽饮千江酒，神飞百尺楼。弗如山吐秀，何必水藏忧。笛韵盈轩宇，星辉落晚舟。难及天子第，歆子应何求？]]></content>
       <categories>
         <category>文学</category>
         <category>古诗词</category>
