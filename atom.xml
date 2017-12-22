@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-22T05:17:09.714Z</updated>
+  <updated>2017-12-22T05:41:02.792Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux下安装jdk8</title>
+    <link href="http://yoursite.com/2017/12/22/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/jdk/linux%E4%B8%8B%E5%AE%89%E8%A3%85jdk8/"/>
+    <id>http://yoursite.com/2017/12/22/开发工具/jdk/linux下安装jdk8/</id>
+    <published>2017-12-21T16:00:00.000Z</published>
+    <updated>2017-12-22T05:41:02.792Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="下载jdk8安装包"><a href="#下载jdk8安装包" class="headerlink" title="下载jdk8安装包"></a>下载jdk8安装包</h3><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p><a id="more"></a><img src="/2017/12/22/开发工具/jdk/linux下安装jdk8/01.png"><h3 id="拷贝到指定目录下（比如：-usr-package）"><a href="#拷贝到指定目录下（比如：-usr-package）" class="headerlink" title="拷贝到指定目录下（比如：/usr/package）"></a>拷贝到指定目录下（比如：/usr/package）</h3><h3 id="解压到安装目录下-比如-usr-soft-java"><a href="#解压到安装目录下-比如-usr-soft-java" class="headerlink" title="解压到安装目录下(比如:/usr/soft/java)"></a>解压到安装目录下(比如:/usr/soft/java)</h3><p>tar -zxvf jdk-8u121-linux-x64.gz -C /usr/soft/java</p><h3 id="建立一个连接，方便引用-可以跳过"><a href="#建立一个连接，方便引用-可以跳过" class="headerlink" title="建立一个连接，方便引用(可以跳过)"></a>建立一个连接，方便引用(可以跳过)</h3><p>ln -s /usr/soft/java/jdk1.8.0_121/ /usr/jdk</p><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>vim /etc/profile</p><p>JAVA_HOME=/usr/jdk</p><p>CLASSPATH=$JAVA_HOME/lib/</p><p>PATH=$PATH:$JAVA_HOME/bin</p><p>export PATH JAVA_HOME CLASSPATH</p><h3 id="让环境变量生效"><a href="#让环境变量生效" class="headerlink" title="让环境变量生效"></a>让环境变量生效</h3><p>执行 source /etc/profile</p><p>或者 sudo shutdown -r now</p><img src="/2017/12/22/开发工具/jdk/linux下安装jdk8/02.png"><h3 id="验证安装是否成功"><a href="#验证安装是否成功" class="headerlink" title="验证安装是否成功"></a>验证安装是否成功</h3><p>java -version</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;下载jdk8安装包&quot;&gt;&lt;a href=&quot;#下载jdk8安装包&quot; class=&quot;headerlink&quot; title=&quot;下载jdk8安装包&quot;&gt;&lt;/a&gt;下载jdk8安装包&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="jdk" scheme="http://yoursite.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/jdk/"/>
+    
+    
+      <category term="开发工具" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="jdk" scheme="http://yoursite.com/tags/jdk/"/>
+    
+  </entry>
   
   <entry>
     <title>javaweb获取客户端真实ip</title>
@@ -45,35 +73,6 @@
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>msi文件安装错误</title>
-    <link href="http://yoursite.com/2017/12/21/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/msi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF/"/>
-    <id>http://yoursite.com/2017/12/21/系统软件/msi文件安装错误/</id>
-    <published>2017-12-20T16:00:00.000Z</published>
-    <updated>2017-12-21T02:13:42.185Z</updated>
-    
-    <content type="html"><![CDATA[<p>1、错误代码为2502、2503的情况下，用如下方法解决</p><p>首先用管理员身份打开命令行，然后用如下命令进行安装：<br>msiexec /package 路径</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;1、错误代码为2502、2503的情况下，用如下方法解决&lt;/p&gt;
-&lt;p&gt;首先用管理员身份打开命令行，然后用如下命令进行安装：&lt;br&gt;msiexec /package 路径&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="系统软件" scheme="http://yoursite.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="系统软件" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
-    
-      <category term="安装" scheme="http://yoursite.com/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -140,6 +139,35 @@
       <category term="插件" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6/"/>
     
       <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>msi文件安装错误</title>
+    <link href="http://yoursite.com/2017/12/21/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/msi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF/"/>
+    <id>http://yoursite.com/2017/12/21/系统软件/msi文件安装错误/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T02:13:42.185Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、错误代码为2502、2503的情况下，用如下方法解决</p><p>首先用管理员身份打开命令行，然后用如下命令进行安装：<br>msiexec /package 路径</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、错误代码为2502、2503的情况下，用如下方法解决&lt;/p&gt;
+&lt;p&gt;首先用管理员身份打开命令行，然后用如下命令进行安装：&lt;br&gt;msiexec /package 路径&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="系统软件" scheme="http://yoursite.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="系统软件" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="安装" scheme="http://yoursite.com/tags/%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
@@ -453,19 +481,19 @@
   </entry>
   
   <entry>
-    <title>无忧即乐-其五</title>
-    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%97%A0%E5%BF%A7%E5%8D%B3%E4%B9%90-%E5%85%B6%E4%BA%94/"/>
-    <id>http://yoursite.com/2014/04/20/文学/古诗词/无忧即乐-其五/</id>
+    <title>青天鉴</title>
+    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E9%9D%92%E5%A4%A9%E9%89%B4/"/>
+    <id>http://yoursite.com/2014/04/20/文学/古诗词/青天鉴/</id>
     <published>2014-04-19T16:00:00.000Z</published>
-    <updated>2017-12-20T09:16:06.397Z</updated>
+    <updated>2017-12-20T09:16:48.158Z</updated>
     
-    <content type="html"><![CDATA[<p>静倚危楼性自空，情疏笔墨意难穷。<br>缺伊院落花携雨，失水池塘柳带风。<br>闲著诗词优雅处，忙敲代码快然中。<br>天涯过客形相似，世上行人趣不同。</p>]]></content>
+    <content type="html"><![CDATA[<p>中驿怀珏八百日，麻城坐井二十年。<br>门前众雁蹁跹过，岭外孤云浮去闲。<br>岂是寒梅甘寂寞，独学鸷鸟向长天。<br>青灯不避风霜路，老死犹能气满轩。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;静倚危楼性自空，情疏笔墨意难穷。&lt;br&gt;缺伊院落花携雨，失水池塘柳带风。&lt;br&gt;闲著诗词优雅处，忙敲代码快然中。&lt;br&gt;天涯过客形相似，世上行人趣不同。&lt;/p&gt;
+        &lt;p&gt;中驿怀珏八百日，麻城坐井二十年。&lt;br&gt;门前众雁蹁跹过，岭外孤云浮去闲。&lt;br&gt;岂是寒梅甘寂寞，独学鸷鸟向长天。&lt;br&gt;青灯不避风霜路，老死犹能气满轩。&lt;/p&gt;
 
       
     
@@ -483,19 +511,19 @@
   </entry>
   
   <entry>
-    <title>青天鉴</title>
-    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E9%9D%92%E5%A4%A9%E9%89%B4/"/>
-    <id>http://yoursite.com/2014/04/20/文学/古诗词/青天鉴/</id>
+    <title>无忧即乐-其五</title>
+    <link href="http://yoursite.com/2014/04/20/%E6%96%87%E5%AD%A6/%E5%8F%A4%E8%AF%97%E8%AF%8D/%E6%97%A0%E5%BF%A7%E5%8D%B3%E4%B9%90-%E5%85%B6%E4%BA%94/"/>
+    <id>http://yoursite.com/2014/04/20/文学/古诗词/无忧即乐-其五/</id>
     <published>2014-04-19T16:00:00.000Z</published>
-    <updated>2017-12-20T09:16:48.158Z</updated>
+    <updated>2017-12-20T09:16:06.397Z</updated>
     
-    <content type="html"><![CDATA[<p>中驿怀珏八百日，麻城坐井二十年。<br>门前众雁蹁跹过，岭外孤云浮去闲。<br>岂是寒梅甘寂寞，独学鸷鸟向长天。<br>青灯不避风霜路，老死犹能气满轩。</p>]]></content>
+    <content type="html"><![CDATA[<p>静倚危楼性自空，情疏笔墨意难穷。<br>缺伊院落花携雨，失水池塘柳带风。<br>闲著诗词优雅处，忙敲代码快然中。<br>天涯过客形相似，世上行人趣不同。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;中驿怀珏八百日，麻城坐井二十年。&lt;br&gt;门前众雁蹁跹过，岭外孤云浮去闲。&lt;br&gt;岂是寒梅甘寂寞，独学鸷鸟向长天。&lt;br&gt;青灯不避风霜路，老死犹能气满轩。&lt;/p&gt;
+        &lt;p&gt;静倚危楼性自空，情疏笔墨意难穷。&lt;br&gt;缺伊院落花携雨，失水池塘柳带风。&lt;br&gt;闲著诗词优雅处，忙敲代码快然中。&lt;br&gt;天涯过客形相似，世上行人趣不同。&lt;/p&gt;
 
       
     
@@ -588,36 +616,6 @@
       
         &lt;p&gt;倚栏独眺，看着夜的黑一层层铺满我的窗台。脑际一闪而过的念想，如天际存留的最后一丝光线，瞬间膨胀、扩散，然后被稀释成一种恒久的空白。时间，被一点一点的蚕食殆尽。风催繁华落，独留人怅然。&lt;/p&gt;
 &lt;p&gt;摊开手掌，明了一个人的过去。掌纹深深浅浅、重重叠叠，来路坎坎坷坷、曲曲折折。
-      
-    
-    </summary>
-    
-      <category term="文学" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/"/>
-    
-      <category term="随笔" scheme="http://yoursite.com/categories/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="文学" scheme="http://yoursite.com/tags/%E6%96%87%E5%AD%A6/"/>
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>以我眼，看中国（思修课演讲稿）</title>
-    <link href="http://yoursite.com/2013/03/15/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/%E4%BB%A5%E6%88%91%E7%9C%BC%EF%BC%8C%E7%9C%8B%E4%B8%AD%E5%9B%BD/"/>
-    <id>http://yoursite.com/2013/03/15/文学/随笔/以我眼，看中国/</id>
-    <published>2013-03-14T16:00:00.000Z</published>
-    <updated>2017-12-21T01:42:48.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>  (1)<br> 我们都有一个共同的名字，叫做中华儿女<br> 我们都有一个响亮的称号，叫做炎黄子孙<br> 五千年的历史文明是我们休憩的宝地<br> 九百六十万平方公里的版图是我们成长的摇篮</p><p> 我们的骨肉中隐藏着泰山傲岸的身影<br> 我们的血液里翻滚着长江激荡的脾性<br> 老子以五千言立道，我们便有了广阔的天空<br> 孔子以二十篇弘儒，我们便有了坚实的大地 </p><p> 尘雾千里，历史在我眼前朦胧地呈现：<br> 汉张骞出使西域，开通丝绸之路，那是何等的繁荣<br> 唐鉴真东渡日本，促进中日邦交，那是何等的强盛<br> 明郑和远下西洋，盛况空前，那是何等的豪迈</p><p> （2）<br> 截取一段时光，打磨成一面明镜<br> 明镜指示的方向，是一种残忍的真实</p><p> 我看见鸦片悄无声息的爬上了中国人的烟斗<br> 我看见数不清的条约压在中国人的心头<br> 我看见万园之园 在中国人最疼痛的地方付之一炬<br> 我看见原本完整的土地在中国人的眼中被践踏得千疮百孔、残缺不全</p><p> 究竟什么缘故？<br> 在那段诡谲奇变的历史岁月中，到底发生了什么？<br> 明镜无语</p><p> 当社稷危在旦夕，一个个鲜活的面容出现在我们的面前<br> 林则徐来了、张之洞来了…<br> 梁启超来了、谭嗣同来了…<br> 孙中山来了、黄兴来了…<br> 中国有救了</p><p> （3）</p><p> 时光渐远，历史残存的讯息，是另一种<br> 悲壮的鲜红<br> 我们只得在一页页史书中找寻<br> 他们的足迹</p><p> 圣人虽故，大道犹存，星星之火传不尽<br> 旧史既去，新史当书，纷繁故事看无穷</p><p> 在如今没有硝烟的战场上，是一场又一场生与死的博弈<br> 但我们丝毫不会退<br> 因为我们都有一个共同的名字，叫做中华儿女<br> 因为我们都有一个响亮的称号，叫做炎黄子孙</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;  (1)&lt;br&gt; 我们都有一个共同的名字，叫做中华儿女&lt;br&gt; 我们都有一个响亮的称号，叫做炎黄子孙&lt;br&gt; 五千年的历史文明是我们休憩的宝地&lt;br&gt; 九百六十万平方公里的版图是我们成长的摇篮&lt;/p&gt;
-&lt;p&gt; 我们的骨肉中隐藏着泰山傲岸的身影&lt;br&gt; 我们的血液里翻滚着长
       
     
     </summary>
