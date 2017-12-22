@@ -27,6 +27,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[msi文件安装错误]]></title>
+    <url>%2F2017%2F12%2F21%2F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%2Fmsi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF%2F</url>
+    <content type="text"><![CDATA[1、错误代码为2502、2503的情况下，用如下方法解决 首先用管理员身份打开命令行，然后用如下命令进行安装：msiexec /package 路径]]></content>
+      <categories>
+        <category>系统软件</category>
+      </categories>
+      <tags>
+        <tag>系统软件</tag>
+        <tag>安装</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[1、在linux上搭建svn服务]]></title>
     <url>%2F2017%2F12%2F21%2F%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%2FSvn%2F1%E3%80%81%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1%2F</url>
     <content type="text"><![CDATA[环境 操作系统 CentOS 7.2 64位 CPU 1核 内存 1GB 安装 yum install subversion 查看安装位置： rpm -ql subversion 查看svn的版本 /usr/bin/svnversion –version 创建svn版本库根目录 mkdir -p /usr/repo/svn 创建版本库 svnadmin create /usr/repo/svn/test1执行了这个命令之后会在/usr/repo/svn/test1目录下生成如下这些文件: 修改svn配置进入conf目录authz文件是权限控制文件passwd是帐号密码文件svnserve.conf SVN服务配置文件 设置帐号密码vi passwd在[users]块中添加用户和密码，格式：帐号=密码，如yangwen = 123456 设置权限vi authz在末尾添加如下代码：[/]yangwen=rww=r意思是版本库的根目录dan对其有读写权限，w只有读权限。 修改svnserve.conf文件vi svnserve.conf打开下面的几个注释：anon-access = read #匿名用户可读auth-access = write #授权用户可写password-db = passwd #使用哪个文件作为账号文件authz-db = authz #使用哪个文件作为权限文件realm = /var/svn/svnrepos # 认证空间名，版本库所在目录 启动svn版本库 svnserve -d -r /usr/repo/svn 查看是否启动成功 ps aux | grep svnserve执行命令，结果如下： 在Windows上测试 Checkout: svn://118.89.63.66/test1]]></content>
@@ -52,18 +64,6 @@
         <tag>开发工具</tag>
         <tag>插件</tag>
         <tag>eclipse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[msi文件安装错误]]></title>
-    <url>%2F2017%2F12%2F21%2F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%2Fmsi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF%2F</url>
-    <content type="text"><![CDATA[1、错误代码为2502、2503的情况下，用如下方法解决 首先用管理员身份打开命令行，然后用如下命令进行安装：msiexec /package 路径]]></content>
-      <categories>
-        <category>系统软件</category>
-      </categories>
-      <tags>
-        <tag>系统软件</tag>
-        <tag>安装</tag>
       </tags>
   </entry>
   <entry>
@@ -132,6 +132,20 @@
       <tags>
         <tag>文学</tag>
         <tag>古诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[1、快速入门]]></title>
+    <url>%2F2014%2F12%2F22%2F%E6%A1%86%E6%9E%B6%2Fasgc-web%2F1%E3%80%81%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[安装nodeasgc-web是一款基于node的一站式web框架。因此，如果你的电脑上还没有安装node，请点击下面的链接按照步骤进行安装，安装的版本最好不低于8.0. 如何安装node? 安装asgc-web npm install asgc-web -g 查看版本安装完成之后，可以在命令行执行如下命令，如果安装成功，将显示asgc-web的版本号。 asgc -v 创建项目 asgc new [project] 执行上面的命令，将在当前命令创建一个项目模板。参数project为项目名称，可不填，默认为demo。 运行项目 asgc start [port] 进入项目根目录，执行以上命令，将启动一个asgc-web项目，port为端口号。port可不填，如果不填，则取项目根目录下的app.json里面配置的port为端口号。如果app.json不存在或者没有配置port，则默认取8088。]]></content>
+      <categories>
+        <category>框架</category>
+        <category>asgc-web</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>node</tag>
+        <tag>asgc-web</tag>
       </tags>
   </entry>
   <entry>
@@ -733,9 +747,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[无极-世]]></title>
-    <url>%2F2008%2F12%2F06%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E6%97%A0%E6%9E%81-%E4%B8%96%2F</url>
-    <content type="text"><![CDATA[天地多桀乱，人间无是非。骨肉作食补，苍凉世可悲。挥泪向天洒，只作雪纷飞。血肉儿女情，无字箴言碑。]]></content>
+    <title><![CDATA[无极-心]]></title>
+    <url>%2F2008%2F12%2F06%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E6%97%A0%E6%9E%81-%E5%BF%83%2F</url>
+    <content type="text"><![CDATA[轻心观四宇，落笔便惊涛。驱形为意使，人间自逍遥。诗酒平生任，名利是花雕。风云全变色，天地一身高。]]></content>
       <categories>
         <category>文学</category>
         <category>古诗词</category>
@@ -746,9 +760,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[无极-心]]></title>
-    <url>%2F2008%2F12%2F06%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E6%97%A0%E6%9E%81-%E5%BF%83%2F</url>
-    <content type="text"><![CDATA[轻心观四宇，落笔便惊涛。驱形为意使，人间自逍遥。诗酒平生任，名利是花雕。风云全变色，天地一身高。]]></content>
+    <title><![CDATA[无极-世]]></title>
+    <url>%2F2008%2F12%2F06%2F%E6%96%87%E5%AD%A6%2F%E5%8F%A4%E8%AF%97%E8%AF%8D%2F%E6%97%A0%E6%9E%81-%E4%B8%96%2F</url>
+    <content type="text"><![CDATA[天地多桀乱，人间无是非。骨肉作食补，苍凉世可悲。挥泪向天洒，只作雪纷飞。血肉儿女情，无字箴言碑。]]></content>
       <categories>
         <category>文学</category>
         <category>古诗词</category>

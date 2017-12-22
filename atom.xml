@@ -77,6 +77,35 @@
   </entry>
   
   <entry>
+    <title>msi文件安装错误</title>
+    <link href="http://blog.aoshiguchen.com/2017/12/21/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/msi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF/"/>
+    <id>http://blog.aoshiguchen.com/2017/12/21/系统软件/msi文件安装错误/</id>
+    <published>2017-12-20T16:00:00.000Z</published>
+    <updated>2017-12-21T02:13:42.185Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、错误代码为2502、2503的情况下，用如下方法解决</p><p>首先用管理员身份打开命令行，然后用如下命令进行安装：<br>msiexec /package 路径</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、错误代码为2502、2503的情况下，用如下方法解决&lt;/p&gt;
+&lt;p&gt;首先用管理员身份打开命令行，然后用如下命令进行安装：&lt;br&gt;msiexec /package 路径&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="系统软件" scheme="http://blog.aoshiguchen.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="系统软件" scheme="http://blog.aoshiguchen.com/tags/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="安装" scheme="http://blog.aoshiguchen.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>1、在linux上搭建svn服务</title>
     <link href="http://blog.aoshiguchen.com/2017/12/21/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Svn/1%E3%80%81%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1/"/>
     <id>http://blog.aoshiguchen.com/2017/12/21/开发工具/Svn/1、在linux上搭建svn服务/</id>
@@ -143,35 +172,6 @@
   </entry>
   
   <entry>
-    <title>msi文件安装错误</title>
-    <link href="http://blog.aoshiguchen.com/2017/12/21/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/msi%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF/"/>
-    <id>http://blog.aoshiguchen.com/2017/12/21/系统软件/msi文件安装错误/</id>
-    <published>2017-12-20T16:00:00.000Z</published>
-    <updated>2017-12-21T02:13:42.185Z</updated>
-    
-    <content type="html"><![CDATA[<p>1、错误代码为2502、2503的情况下，用如下方法解决</p><p>首先用管理员身份打开命令行，然后用如下命令进行安装：<br>msiexec /package 路径</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;1、错误代码为2502、2503的情况下，用如下方法解决&lt;/p&gt;
-&lt;p&gt;首先用管理员身份打开命令行，然后用如下命令进行安装：&lt;br&gt;msiexec /package 路径&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="系统软件" scheme="http://blog.aoshiguchen.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="系统软件" scheme="http://blog.aoshiguchen.com/tags/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
-    
-      <category term="安装" scheme="http://blog.aoshiguchen.com/tags/%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
     <title>用java实现一个简单的深度神经网络</title>
     <link href="http://blog.aoshiguchen.com/2017/12/21/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/0.0.1/java/%E7%94%A8java%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     <id>http://blog.aoshiguchen.com/2017/12/21/算法/深度学习/0.0.1/java/用java实现一个简单的深度神经网络/</id>
@@ -209,7 +209,7 @@
     <link href="http://blog.aoshiguchen.com/2017/12/21/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/1%E3%80%81%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1/"/>
     <id>http://blog.aoshiguchen.com/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/</id>
     <published>2017-12-20T16:00:00.000Z</published>
-    <updated>2017-12-21T07:34:24.353Z</updated>
+    <updated>2017-12-22T08:07:48.303Z</updated>
     
     <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul><li>操作系统 CentOS 7.2 64位</li><li>CPU 1核</li><li>内存 1GB</li></ul><h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><blockquote><p>yum install -y git</p></blockquote><a id="more"></a><h2 id="查看安装版本"><a href="#查看安装版本" class="headerlink" title="查看安装版本"></a>查看安装版本</h2><blockquote><p>git –version</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/01.png"><h2 id="创建Git用户，并为Git用户设置密码"><a href="#创建Git用户，并为Git用户设置密码" class="headerlink" title="创建Git用户，并为Git用户设置密码"></a>创建Git用户，并为Git用户设置密码</h2><blockquote><p>useradd git<br>passwd git  （12345678）</p></blockquote><h2 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h2><blockquote><p>mkdir -p /usr/repo/git/test1.git<br>git init –bare /usr/repo/git/test1.git<br>cd /usr/repo/git/<br>chown -R git:git test1.git</p></blockquote><h2 id="客户端clone远程仓库"><a href="#客户端clone远程仓库" class="headerlink" title="客户端clone远程仓库"></a>客户端clone远程仓库</h2><blockquote><p>git clone git@118.89.63.66:/usr/repo/git/test1.git</p></blockquote><h2 id="客户端创建SSH公钥和私钥"><a href="#客户端创建SSH公钥和私钥" class="headerlink" title="客户端创建SSH公钥和私钥"></a>客户端创建SSH公钥和私钥</h2><p>客户端第一次clone会要求输入密码，此时可用SHH创建公钥、私钥。<br>在window客户端，git bash中执行以下命令：</p><blockquote><p>ssh-keygen -t rsa -C “1052045476@qq.com”  </p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/02.png"><h2 id="服务器端Git打开RSA认证"><a href="#服务器端Git打开RSA认证" class="headerlink" title="服务器端Git打开RSA认证"></a>服务器端Git打开RSA认证</h2><p>进入 /etc/ssh 目录，编辑 sshd_config，打开以下三个配置的注释：<br>RSAAuthentication yes<br>PubkeyAuthentication yes<br>AuthorizedKeysFile .ssh/authorized_keys</p><h2 id="保存并重启-sshd-服务："><a href="#保存并重启-sshd-服务：" class="headerlink" title="保存并重启 sshd 服务："></a>保存并重启 sshd 服务：</h2><blockquote><p>service sshd restart</p></blockquote><h2 id="打开RSA认证"><a href="#打开RSA认证" class="headerlink" title="打开RSA认证"></a>打开RSA认证</h2><p>由 AuthorizedKeysFile 得知公钥的存放路径是 .ssh/authorized_keys，实际上是$Home/.ssh/authorized_keys，由于管理 Git 服务的用户是 git，所以实际存放公钥的路径是 /home/git/.ssh/authorized_keys<br>在 /home/git/ 下创建目录 .ssh</p><blockquote><p>cd /home/git<br>mkdir .ssh<br>chown -R git:git .ssh</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/03.png"><h2 id="将客户端公钥导入服务端-home-git-ssh-authorized-keys文件"><a href="#将客户端公钥导入服务端-home-git-ssh-authorized-keys文件" class="headerlink" title="将客户端公钥导入服务端 /home/git/.ssh/authorized_keys文件"></a>将客户端公钥导入服务端 /home/git/.ssh/authorized_keys文件</h2><blockquote><p>ssh git@118.89.63.66 ‘cat &gt;&gt; .ssh/authorized_keys’ &lt; ~/.ssh/id_rsa.pub</p></blockquote><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/04.png"><p>此处输入git密码，（12345678）</p><p>回到服务器端，查看 .ssh 下是否存在 authorized_keys 文件：</p><img src="/2017/12/21/开发工具/Git/1、在linux上搭建Git服务/05.png"><h2 id="修改-ssh目录权限"><a href="#修改-ssh目录权限" class="headerlink" title="修改.ssh目录权限"></a>修改.ssh目录权限</h2><blockquote><p>chmod 700 .ssh<br>cd .ssh<br>chmod 600 authorized_keys </p></blockquote><h2 id="客户端clone仓库"><a href="#客户端clone仓库" class="headerlink" title="客户端clone仓库"></a>客户端clone仓库</h2><blockquote><p>git clone git@118.89.63.66:/usr/repo/git/test1.git</p></blockquote><h2 id="禁止git用户-ssh登录服务器"><a href="#禁止git用户-ssh登录服务器" class="headerlink" title="禁止git用户 ssh登录服务器"></a>禁止git用户 ssh登录服务器</h2><p>编辑 /etc/passwd<br>找到：<br>git:x:502:504::/home/git:/bin/bash<br>修改为<br>git:x:502:504::/home/git:/bin/git-shell<br>此时 git 用户可以正常通过 ssh 使用 git，但无法通过 ssh 登录系统。</p>]]></content>
     
@@ -326,6 +326,37 @@
       <category term="文学" scheme="http://blog.aoshiguchen.com/tags/%E6%96%87%E5%AD%A6/"/>
     
       <category term="古诗词" scheme="http://blog.aoshiguchen.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1、快速入门</title>
+    <link href="http://blog.aoshiguchen.com/2014/12/22/%E6%A1%86%E6%9E%B6/asgc-web/1%E3%80%81%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
+    <id>http://blog.aoshiguchen.com/2014/12/22/框架/asgc-web/1、快速入门/</id>
+    <published>2014-12-21T16:00:00.000Z</published>
+    <updated>2017-12-22T08:07:46.989Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h2><p>asgc-web是一款基于node的一站式web框架。因此，如果你的电脑上还没有安装node，请点击下面的链接按照步骤进行安装，安装的版本最好不低于8.0.</p><p><a href="https://www.cnblogs.com/pigtail/archive/2013/01/08/2850486.html" target="_blank" rel="noopener">如何安装node?</a></p><h2 id="安装asgc-web"><a href="#安装asgc-web" class="headerlink" title="安装asgc-web"></a>安装asgc-web</h2><blockquote><p>npm install asgc-web -g</p></blockquote><h2 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h2><p>安装完成之后，可以在命令行执行如下命令，如果安装成功，将显示asgc-web的版本号。</p><blockquote><p>asgc -v</p></blockquote><h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><blockquote><p>asgc new [project]</p></blockquote><p>执行上面的命令，将在当前命令创建一个项目模板。参数project为项目名称，可不填，默认为demo。</p><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><blockquote><p>asgc start [port]</p></blockquote><p>进入项目根目录，执行以上命令，将启动一个asgc-web项目，port为端口号。port可不填，如果不填，则取项目根目录下的app.json里面配置的port为端口号。如果app.json不存在或者没有配置port，则默认取8088。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;安装node&quot;&gt;&lt;a href=&quot;#安装node&quot; class=&quot;headerlink&quot; title=&quot;安装node&quot;&gt;&lt;/a&gt;安装node&lt;/h2&gt;&lt;p&gt;asgc-web是一款基于node的一站式web框架。因此，如果你的电脑上还没有安装node，请点击下面的链
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://blog.aoshiguchen.com/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="asgc-web" scheme="http://blog.aoshiguchen.com/categories/%E6%A1%86%E6%9E%B6/asgc-web/"/>
+    
+    
+      <category term="框架" scheme="http://blog.aoshiguchen.com/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="node" scheme="http://blog.aoshiguchen.com/tags/node/"/>
+    
+      <category term="asgc-web" scheme="http://blog.aoshiguchen.com/tags/asgc-web/"/>
     
   </entry>
   
@@ -598,36 +629,6 @@
       <category term="文学" scheme="http://blog.aoshiguchen.com/tags/%E6%96%87%E5%AD%A6/"/>
     
       <category term="古诗词" scheme="http://blog.aoshiguchen.com/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>站出一种风度，笑出一种境界</title>
-    <link href="http://blog.aoshiguchen.com/2013/04/05/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/%E7%AB%99%E5%87%BA%E4%B8%80%E7%A7%8D%E9%A3%8E%E5%BA%A6%EF%BC%8C%E7%AC%91%E5%87%BA%E4%B8%80%E7%A7%8D%E5%A2%83%E7%95%8C/"/>
-    <id>http://blog.aoshiguchen.com/2013/04/05/文学/随笔/站出一种风度，笑出一种境界/</id>
-    <published>2013-04-04T16:00:00.000Z</published>
-    <updated>2017-12-21T01:46:14.840Z</updated>
-    
-    <content type="html"><![CDATA[<p>倚栏独眺，看着夜的黑一层层铺满我的窗台。脑际一闪而过的念想，如天际存留的最后一丝光线，瞬间膨胀、扩散，然后被稀释成一种恒久的空白。时间，被一点一点的蚕食殆尽。风催繁华落，独留人怅然。</p><p>摊开手掌，明了一个人的过去。掌纹深深浅浅、重重叠叠，来路坎坎坷坷、曲曲折折。五指间的间隙，是一口填不满的陷阱。雨在掌纹中流淌，风从五指间吹过。我们紧握小拳来到人世，我们摊开手掌离开亲友。手掌一开一合，便完成了其一生的使命。剩下的，只有关于你的光学投影和化学反应。</p><p>擦亮一块玻璃，努力向外望去，强烈的光芒是否会灼伤双眼？</p><p>戴上耳机，电信号转化成的一种和谐的音波，回旋在我空旷的城市。今夜，我让音乐涤荡我的心。</p><p>蓦然间，忆起从前的林间放歌、席上挥毫。不经意间发现，那种状态已经渐行渐远。而现在，不正是以前汲汲以求的么。告别，正是最完美的走向；放下，正是最深情的拥抱。</p><p>将最豪迈的歌唱击打在键盘上，将最飘逸的诗句凝练成代码一行又一行。比诗句晦涩，让读懂它的人愈加稀少。比诗句通俗，在你精确地解读下无有二义。</p><p>敲一段代码，就是敲响一首梅花三弄，婉转动人。敲一段代码，就是敲响一首生命交响曲，激烈悲壮。让玲花点燃我疲沓的激情，让黄磊托起我站立的高度，让张宇刺激我麻木的神经，让腾格尔惊醒我昏睡的大脑。</p><p>做一个追求极致的人。</p><p>人之一生，何其短暂，何其渺小。站在宇宙的高度俯瞰，我们就是一粒微细的粉尘。风来雨来，瞬间湮灭。</p><p>一生一定要做点什么，难以想象一个人的一生会仅仅和大自然进物质交换和能量交换。在物质的盈缺中进化你的思想，在意识的合决中升华你的灵魂。</p><p>世界上有两种人，羡慕别人的人，让别人羡慕的人。</p><p>我们的的 轨迹，就是从羡慕别人的人指向让别人羡慕的人。</p><p>穷究一个问题的本质，你就掌握了一万个问题的答案。</p><p>学习，不是对知识点进行一次简单的遍历。机器能做到的让机器去做，你只需要归纳一条公式，总结一个道理。当你真的明白了，你就会豁然开朗。</p><p>双脚重踩在大地上，头颅轻放在云端。<br>让狭窄的心脏映射四海的辽阔，让平静的面庞抖落日月的光芒。</p><p>站，要站出一种风度；笑，要笑出一种境界。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;倚栏独眺，看着夜的黑一层层铺满我的窗台。脑际一闪而过的念想，如天际存留的最后一丝光线，瞬间膨胀、扩散，然后被稀释成一种恒久的空白。时间，被一点一点的蚕食殆尽。风催繁华落，独留人怅然。&lt;/p&gt;
-&lt;p&gt;摊开手掌，明了一个人的过去。掌纹深深浅浅、重重叠叠，来路坎坎坷坷、曲曲折折。
-      
-    
-    </summary>
-    
-      <category term="文学" scheme="http://blog.aoshiguchen.com/categories/%E6%96%87%E5%AD%A6/"/>
-    
-      <category term="随笔" scheme="http://blog.aoshiguchen.com/categories/%E6%96%87%E5%AD%A6/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="文学" scheme="http://blog.aoshiguchen.com/tags/%E6%96%87%E5%AD%A6/"/>
-    
-      <category term="随笔" scheme="http://blog.aoshiguchen.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
