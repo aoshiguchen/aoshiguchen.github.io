@@ -394,142 +394,194 @@ me.copyPageLink = function(){
 
 };
 
-//缓存
-me.cache = function(){
-  var storage = localStorage;
+///////////////////////////////////////////////第一版的短链
 
-  return {
-    set: function(k,v){
-      storage.setItem(k,v);
-    },
-    get: function(k){
-      storage.getItem(k);
-    },
-    setJson: function(k,v){
-      storage.setItem(k,JSON.stringify(v));
-    },
-    getJson: function(k){
+// //缓存
+// me.cache = function(){
+//   var storage = localStorage;
 
-      var val = storage.getItem(k);
+//   return {
+//     set: function(k,v){
+//       storage.setItem(k,v);
+//     },
+//     get: function(k){
+//       storage.getItem(k);
+//     },
+//     setJson: function(k,v){
+//       storage.setItem(k,JSON.stringify(v));
+//     },
+//     getJson: function(k){
 
-      if(!val) return;
-      else return JSON.parse(val);
-    },
-    addShortMap: function(k,v){
-      var data = this.getJson('shortUrlMap') || {};
-      data[k] = v;
-      this.setJson('shortUrlMap',data);
-    },
-    getShortMap: function(){
+//       var val = storage.getItem(k);
 
-      return this.getJson('shortUrlMap') || {};
-    },
-    pushBackUrl: function(url){
-      //解决点击回退两次，才能回退至上一页的问题
-      //用数组记录url，每进入一个新页面，添加url至数组尾部。如果要添加的URL与尾部url相同，则不添加。
-      //每回退一次，取出数组尾部url跳转，并删除尾部元素。如果数组为空，则不操作。
-      //数组最大长度为100
+//       if(!val) return;
+//       else return JSON.parse(val);
+//     },
+//     addShortMap: function(k,v){
+//       var data = this.getJson('shortUrlMap') || {};
+//       data[k] = v;
+//       this.setJson('shortUrlMap',data);
+//     },
+//     getShortMap: function(){
+
+//       return this.getJson('shortUrlMap') || {};
+//     },
+//     pushBackUrl: function(url){
+//       //解决点击回退两次，才能回退至上一页的问题
+//       //用数组记录url，每进入一个新页面，添加url至数组尾部。如果要添加的URL与尾部url相同，则不添加。
+//       //每回退一次，取出数组尾部url跳转，并删除尾部元素。如果数组为空，则不操作。
+//       //数组最大长度为100
       
-      if(!url)return;
+//       if(!url)return;
 
-      var maxCount = 100;
-      var urls = this.getJson('backurls') || [];
-      var backUrl = urls.length > 0 ? urls[urls.length - 1] : null;
+//       var maxCount = 100;
+//       var urls = this.getJson('backurls') || [];
+//       var backUrl = urls.length > 0 ? urls[urls.length - 1] : null;
 
-      //if(url == backUrl) return;
+//       //if(url == backUrl) return;
 
-      urls.push(url);
+//       urls.push(url);
 
-      if(urls.length > maxCount){
-        urls = urls.slice(backurls.length - maxCount);
-      }
+//       if(urls.length > maxCount){
+//         urls = urls.slice(backurls.length - maxCount);
+//       }
 
-      this.setJson('backurls',urls);
+//       this.setJson('backurls',urls);
 
-    },
-    popBackUrl: function(){
-      var urls = this.getJson('backurls') || [];
-      var backUrl = urls.pop();
+//     },
+//     popBackUrl: function(){
+//       var urls = this.getJson('backurls') || [];
+//       var backUrl = urls.pop();
 
-      this.setJson('backurls',urls);
+//       this.setJson('backurls',urls);
 
-      return backUrl;
-    },
-    getBackUrls: function(){
-      return this.getJson('backurls') || [];
-    }
-  };
-};
-
-//获取短链
-me.getLinkShort = function(url){
-
-  var key = 'alexis';
-  var urlhash = md5(key,url);
-  var len = urlhash.length;
-  var charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  var shortUrlList = [];
-
-  //将加密后的串分成4段，每段4字节，对每段进行计算，一共可以生成四组短连接
-  for (var i = 0; i < 4; i++) {
-      var urlhashPiece = urlhash.substr(i * len / 4, len / 4);
-      //将分段的位与0x3fffffff做位与，0x3fffffff表示二进制数的30个1，即30位以后的加密串都归零
-      var hex = parseInt(urlhashPiece,16) & 0x3fffffff; //此处需要用到hexdec()将16进制字符串转为10进制数值型，否则运算会不正常
-
-      var shortUrl = '';
-      //生成6位短连接
-      for (var j = 0; j < 6; j++) {
-          //将得到的值与0x0000003d,3d为61，即charset的坐标最大值
-          shortUrl += charset.charAt(hex & 0x0000003d);
-          //循环完以后将hex右移5位
-          hex = hex >> 5;
-      }
-
-      shortUrlList.push(shortUrl);
-  }
-
-  return shortUrlList[0];
-}
+//       return backUrl;
+//     },
+//     getBackUrls: function(){
+//       return this.getJson('backurls') || [];
+//     }
+//   };
+// };
 
 
-if (window.history && window.history.pushState) {
+// //获取短链
+// me.getLinkShort = function(url){
+
+//   var key = 'alexis';
+//   var urlhash = md5(key,url);
+//   var len = urlhash.length;
+//   var charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+//   var shortUrlList = [];
+
+//   //将加密后的串分成4段，每段4字节，对每段进行计算，一共可以生成四组短连接
+//   for (var i = 0; i < 4; i++) {
+//       var urlhashPiece = urlhash.substr(i * len / 4, len / 4);
+//       //将分段的位与0x3fffffff做位与，0x3fffffff表示二进制数的30个1，即30位以后的加密串都归零
+//       var hex = parseInt(urlhashPiece,16) & 0x3fffffff; //此处需要用到hexdec()将16进制字符串转为10进制数值型，否则运算会不正常
+
+//       var shortUrl = '';
+//       //生成6位短连接
+//       for (var j = 0; j < 6; j++) {
+//           //将得到的值与0x0000003d,3d为61，即charset的坐标最大值
+//           shortUrl += charset.charAt(hex & 0x0000003d);
+//           //循环完以后将hex右移5位
+//           hex = hex >> 5;
+//       }
+
+//       shortUrlList.push(shortUrl);
+//   }
+
+//   return shortUrlList[0];
+// }
+
+
+// if (window.history && window.history.pushState) {
+//   //此处配置基网址
+//   me.base = 'http://blog.aoshiguchen.com/';
+
+//   if(document.domain == 'localhost'){
+//     me.base = 'http://localhost:4000/';
+//   }
+
+//   //me.base = 'http://localhost:4000/';
+//   var cache = me.cache();
+//   var shortMap = cache.getShortMap();
+
+//   if(document.location.href != me.base){
+//     var url = document.location.href.substr(me.base.length);
+//     //如果是短链访问，则跳转到长链
+//     if(shortMap[url]){
+//       window.location.href = me.base + shortMap[url];
+//     }else{
+//       //如果是长链，则生成对应的短链，并记录到短链、长链映射
+//       //然后将地址栏回显为短链
+//       var url = document.location.href.substr(me.base.length);
+//       var shortUrl = '#' + me.getLinkShort(url);
+
+//       cache.addShortMap(shortUrl,url);
+
+// //      cache.pushBackUrl(window.location.href);
+
+//       history.pushState(null,null,'../../../../../../../../../../../../../' + shortUrl);
+//     }
+//   }
+
+//   // $(window).on('popstate', function () {
+//   //     if(document.location.href != me.base){
+//   //       window.history.pushState('forward', null, '#');
+//   //       window.history.forward(1);
+
+//   //       var backUrl = cache.popBackUrl();
+//   //       if(backUrl){
+//   //         window.location.href = backUrl;
+//   //       }
+//   //     }
+//   // });
+// }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///
+////////////////////////////////////////////////////////////////////////////////////////////第二版短链
+if (window.history && window.history.pushState){
+  me.shortUrl = null;
   //此处配置基网址
   me.base = 'http://blog.aoshiguchen.com/';
-  //me.base = 'http://localhost:4000/';
-  var cache = me.cache();
-  var shortMap = cache.getShortMap();
+
+  //方便本地测试
+  if(document.domain == 'localhost'){
+    me.base = 'http://localhost:4000/';
+  }
+
+  $.ajax({ 
+    type: "get", 
+    url: "/shortUrl.json", 
+    cache:false, 
+    async:false, 
+    dataType: "json",
+
+    success: function(data){ 
+      me.shortUrl = data;
+    }
+  });
+
+  console.log('shortUrl',me.shortUrl);
+
+  var shortMap = me.shortUrl.toLong;
+  var longMap = me.shortUrl.toShort;
 
   if(document.location.href != me.base){
-    var url = document.location.href.substr(me.base.length);
+      var url = document.location.href.substr(me.base.length);
     //如果是短链访问，则跳转到长链
     if(shortMap[url]){
       window.location.href = me.base + shortMap[url];
-    }else{
+    }else if(longMap[decodeURI(url)]){
       //如果是长链，则生成对应的短链，并记录到短链、长链映射
       //然后将地址栏回显为短链
-      var url = document.location.href.substr(me.base.length);
-      var shortUrl = '#' + me.getLinkShort(url);
-
-      cache.addShortMap(shortUrl,url);
-
-      cache.pushBackUrl(window.location.href);
+      var shortUrl = longMap[decodeURI(url)];
 
       history.pushState(null,null,'../../../../../../../../../../../../../' + shortUrl);
     }
   }
 
-  // $(window).on('popstate', function () {
-  //     if(document.location.href != me.base){
-  //       window.history.pushState('forward', null, '#');
-  //       window.history.forward(1);
-
-  //       var backUrl = cache.popBackUrl();
-  //       if(backUrl){
-  //         window.location.href = backUrl;
-  //       }
-  //     }
-  // });
 }
-
-
-

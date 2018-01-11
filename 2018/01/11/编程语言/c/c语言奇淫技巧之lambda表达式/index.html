@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.3">
+
+
+
+
+
+
+  <meta name="keywords" content="编程语言,c,奇淫技巧," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="傲世孤尘" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="何为奇淫技巧?百科解释：指过于奇巧，让人着迷，却又无益的技艺与制品。 c语言奇淫技巧是指，利用c语言的一些细小的语法特性，来实现一些令人着迷的、眼花缭乱的、看似语言本身不支持的功能。比如：实现c语言封装、继承、多态、lambda表达式、动态包含等。在开发中巧妙运用这些技巧，会让你的程序组织起来更加合理。过于玩弄这些技巧">
+<meta name="keywords" content="编程语言,c,奇淫技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c语言奇淫技巧之lambda表达式">
+<meta property="og:url" content="http://blog.aoshiguchen.com/2018/01/11/编程语言/c/c语言奇淫技巧之lambda表达式/index.html">
+<meta property="og:site_name" content="傲世孤尘">
+<meta property="og:description" content="何为奇淫技巧?百科解释：指过于奇巧，让人着迷，却又无益的技艺与制品。 c语言奇淫技巧是指，利用c语言的一些细小的语法特性，来实现一些令人着迷的、眼花缭乱的、看似语言本身不支持的功能。比如：实现c语言封装、继承、多态、lambda表达式、动态包含等。在开发中巧妙运用这些技巧，会让你的程序组织起来更加合理。过于玩弄这些技巧则会令你舍本逐末、忽略了项目中其他更重要的事情。 研究奇淫技巧，是一个充满趣味的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-11T05:17:34.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c语言奇淫技巧之lambda表达式">
+<meta name="twitter:description" content="何为奇淫技巧?百科解释：指过于奇巧，让人着迷，却又无益的技艺与制品。 c语言奇淫技巧是指，利用c语言的一些细小的语法特性，来实现一些令人着迷的、眼花缭乱的、看似语言本身不支持的功能。比如：实现c语言封装、继承、多态、lambda表达式、动态包含等。在开发中巧妙运用这些技巧，会让你的程序组织起来更加合理。过于玩弄这些技巧则会令你舍本逐末、忽略了项目中其他更重要的事情。 研究奇淫技巧，是一个充满趣味的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.aoshiguchen.com/2018/01/11/编程语言/c/c语言奇淫技巧之lambda表达式/"/>
+
+
+
+
+
+  <title>c语言奇淫技巧之lambda表达式 | 傲世孤尘</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5f50baa6b84cb8be901b64d025bf8642";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">傲世孤尘</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">还生命以坦然，遗沧海以一笑</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-asgc-web">
+          <a href="/categories/框架/asgc-web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-superpowers"></i> <br />
+            
+            asgc-web
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-messageboard">
+          <a href="/messageBoard" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.aoshiguchen.com/2018/01/11/编程语言/c/c语言奇淫技巧之lambda表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="傲世孤尘">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="傲世孤尘">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">c语言奇淫技巧之lambda表达式</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T00:00:00+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程语言/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/01/11/编程语言/c/c语言奇淫技巧之lambda表达式/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/01/11/编程语言/c/c语言奇淫技巧之lambda表达式/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,914字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10分钟
+                </span> 
+              
+            </div>
+          
+
+          
+
+          
+        </div> 
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="何为奇淫技巧"><a href="#何为奇淫技巧" class="headerlink" title="何为奇淫技巧?"></a>何为奇淫技巧?</h2><p>百科解释：指过于奇巧，让人着迷，却又无益的技艺与制品。</p>
+<p>c语言奇淫技巧是指，利用c语言的一些细小的语法特性，来实现一些令人着迷的、眼花缭乱的、看似语言本身不支持的功能。比如：实现c语言封装、继承、多态、lambda表达式、动态包含等。在开发中巧妙运用这些技巧，会让你的程序组织起来更加合理。过于玩弄这些技巧则会令你舍本逐末、忽略了项目中其他更重要的事情。</p>
+<p>研究奇淫技巧，是一个充满趣味的过程，也是不断深入语言的过程。通过理解这些奇淫技巧，你会发现你曾经理解的一些基本的语言概念其实并不是真的理解。</p>
+<a id="more"></a>
+<h2 id="c语言实现lambda表达式的原理"><a href="#c语言实现lambda表达式的原理" class="headerlink" title="c语言实现lambda表达式的原理"></a>c语言实现lambda表达式的原理</h2><p>我们通常用的c语言语法，是c语言标准规定的语法。然而不同的c编译器在实现标准语法的同时，可能会扩展一些其他的特定语法。这些语法一般都是用在底层的一些库、工具中，如果你经常阅读c语言库，一定能发现它们的踪影。<br>c语言实现lambda表达式，是基于gcc的一个扩展。而检查你当前的c编译器是否支持这个扩展，其实很简单。</p>
+<p>运行下面的程序，输出1则证明你的编译器支持，如果报错则不支持。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> a = (&#123;<span class="number">1</span>;&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="实现lambda表达式"><a href="#实现lambda表达式" class="headerlink" title="实现lambda表达式"></a>实现lambda表达式</h2><p>为了便于大家理解，这里采用递进的方式，渐进式修改代码，方便大家明白。</p>
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	(&#123;</span><br><span class="line">		<span class="keyword">char</span>* s = <span class="string">"hello"</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,s);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的运行后输出hello，说明 ({});可以作为一个块级作用域，里面可以运行代码片段。</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>令人惊异的是，这个块级作用域还能对外返回一个值。当然，返回的方式不是return，而是直接写返回值，并带上一个分号。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> a = (&#123;</span><br><span class="line">		<span class="keyword">char</span>* s = <span class="string">"hello"</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,s);</span><br><span class="line">		<span class="number">10</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>既然这种方法可以返回一个值，那么我们返回一个函数呢？毕竟函数名就是函数的首地址，答案是肯定的。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	 (&#123;</span><br><span class="line">		<span class="keyword">void</span> hello()&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		hello;</span><br><span class="line">	&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="宏改写匿名函数"><a href="#宏改写匿名函数" class="headerlink" title="宏改写匿名函数"></a>宏改写匿名函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> $(rt,fb) (&#123; \</span></span><br><span class="line">	rt <span class="keyword">this</span> fb;	\</span><br><span class="line">	<span class="keyword">this</span>;	\</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	$(<span class="keyword">void</span>,()&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">	&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样看是不是有点眼熟呢，不过还是有些美中不足。我们希望这个匿名函数不仅仅只是自执行，还能保存到一个变量中。</p>
+<h3 id="用函数指针类型接收匿名函数对象"><a href="#用函数指针类型接收匿名函数对象" class="headerlink" title="用函数指针类型接收匿名函数对象"></a>用函数指针类型接收匿名函数对象</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> $(rt,fb) (&#123; \</span></span><br><span class="line">	rt <span class="keyword">this</span> fb;	\</span><br><span class="line">	<span class="keyword">this</span>;	\</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//因为匿名函数没有返回值，没有参数，所以函数指针可以定义为：void (*hello)()</span></span><br><span class="line">	<span class="keyword">void</span> (*hello)() = $(<span class="keyword">void</span>,()&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	hello();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="宏改写函数指针定义"><a href="#宏改写函数指针定义" class="headerlink" title="宏改写函数指针定义"></a>宏改写函数指针定义</h3><p>上面虽然解决了保存匿名函数的问题，但是确带来的另一个问题，函数指针的定义比较冗长、复杂。因此，可以通过宏定义的方式改写。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> $(rt,fb) (&#123; \</span></span><br><span class="line">	rt <span class="keyword">this</span> fb;	\</span><br><span class="line">	<span class="keyword">this</span>;	\</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Type(t) typeof((&#123;t _t;_t;&#125;))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FType(rt,fp) typeof((&#123;rt (*_this)fp;_this;&#125;))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Consumer(t) FType(void,(t))</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	Consumer() hello = $(<span class="keyword">void</span>,()&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	hello();</span><br><span class="line"></span><br><span class="line">	Consumer(<span class="keyword">int</span>) a = $(<span class="keyword">void</span>,(<span class="keyword">int</span> n)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"num is %d\n"</span>,n);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	a(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">	Consumer(<span class="keyword">char</span>*) b = $(<span class="keyword">void</span>,(<span class="keyword">char</span>* name)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello %s\n"</span>,name);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	b(<span class="string">"zhangsan"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="lambda表达式库"><a href="#lambda表达式库" class="headerlink" title="lambda表达式库"></a>lambda表达式库</h2><p>到这里，我们就可以写一个lambda表达式的头文件了，用到lambda表达式的地方只需要包含这个头文件就可以了。</p>
+<p>lambda.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _LAMBDA_H_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _LAMBDA_H_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Type(t) typeof((&#123;t _t;_t;&#125;))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FType(rt,fp) typeof((&#123;rt (*_this)fp;_this;&#125;))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lambda(rt,fb) (&#123; \</span></span><br><span class="line">	rt <span class="keyword">this</span> fb;	\</span><br><span class="line">	<span class="keyword">this</span>;	\</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> $ lambda</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Executor FType(void,())</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Consumer(t) FType(void,(t))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BiConsumer(t1,t2) FType(void,(t1,t2))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TiConsumer(t1,t2,t3) FType(void,(t1,t2,t3))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Supplier(rt) FType(rt,())</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Function(rt,t) FType(rt,(t))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BiFunction(rt,t1,t2) FType(rt,(t1,t2))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TiFunction(rt,t1,t2,t3) FType(rt,(t1,t2,t3))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UnaryOperator(t) Function(t,t)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BinaryOperator(t) BiFunction(t,t,t)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
+<p>type.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _TYPE_H_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _TYPE_H_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"lambda.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Bool short</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Int int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> String char*</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntConsumer Consumer(int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntBiConsumer BiConsumer(int,int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntTiConsumer TiConsumer(int,int,int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntSupplier Supplier(int)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> StringSupplier Supplier(String)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntFunction(rt) Function(rt,int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ToIntFunction(t) Function(int,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntBiFunction(rt) BiFunction(rt,int,int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ToIntBiFunction(t1,t2) BiFunction(int,t1,t2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntTiFunction(rt) TiFunction(rt,int,int,int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ToIntTiFunction(t1,t2,t3) TiFunction(int,t1,t2,t3)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntUnaryOperator UnaryOperator(int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> IntBinaryOperator BinaryOperator(int)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Comparator(t) BiFunction(int,t,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Not(t) Function(BOOL,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> And(t) BiFunction(BOOL,t,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Or(t) BiFunction(BOOL,t,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Equal(t) BiFunction(BOOL,t,t)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Test(t) Function(BOOL,t)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Template(T,body) typeof((&#123; \</span></span><br><span class="line">	<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">body</span> _<span class="title">TYPE</span>;</span> \ </span><br><span class="line">	_TYPE _tmp; \</span><br><span class="line">	_tmp; \</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BiTemplate(T1,T2,body) typeof((&#123; \</span></span><br><span class="line">	<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">body</span> _<span class="title">TYPE</span>;</span> \ </span><br><span class="line">	_TYPE _tmp; \</span><br><span class="line">	_tmp; \</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TiTemplate(T1,T2,T3,body) typeof((&#123; \</span></span><br><span class="line">	<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">body</span> _<span class="title">TYPE</span>;</span> \ </span><br><span class="line">	_TYPE _tmp; \</span><br><span class="line">	_tmp; \</span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Data(T) Template(T,&#123; \</span></span><br><span class="line">	T data; \</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>这里为了方便写了另一个头文件，如下：</p>
+<p>util.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _UTIL_H_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _UTIL_H_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"type.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Block FType(void,())</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Code(c) do&#123; \</span></span><br><span class="line">	c \</span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintString(s) printf(<span class="meta-string">"%s"</span>,s)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintStringLn(s) printf(<span class="meta-string">"%s\n"</span>,s)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintInt(d) printf(<span class="meta-string">"%d"</span>,d)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintIntLn(d) printf(<span class="meta-string">"%d\n"</span>,d)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintBool(b) Code(	\</span></span><br><span class="line">	<span class="keyword">if</span>(b == TRUE)&#123;	\</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"true"</span>);	\</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;	\</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"false"</span>);	\</span><br><span class="line">	&#125;	\</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PrintBoolLn(b) Code(	\</span></span><br><span class="line">	<span class="keyword">if</span>(b == TRUE)&#123;	\</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"true\n"</span>);	\</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;	\</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"false\n"</span>);	\</span><br><span class="line">	&#125;	\</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Malloc(t,n) (t)malloc(sizeof(t) * n) </span></span><br><span class="line"></span><br><span class="line"><span class="function">String <span class="title">Concat</span><span class="params">(String s1,String s2)</span></span>&#123;</span><br><span class="line">	Int len = <span class="built_in">strlen</span>(s1) + <span class="built_in">strlen</span>(s2) + <span class="number">1</span>;</span><br><span class="line">	String res = Malloc(String,len);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sprintf</span>(res,<span class="string">"%s%s"</span>,s1,s2);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure></p>
+<p>下面是对于lambda表达式库的一些测试程序</p>
+<h3 id="测试1"><a href="#测试1" class="headerlink" title="测试1"></a>测试1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"lambda.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"util.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"type.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	Block hello1 = $(<span class="keyword">void</span>,()&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	hello1();</span><br><span class="line"></span><br><span class="line">	Consumer(<span class="keyword">char</span>*) hello2 = $(<span class="keyword">void</span>,(<span class="keyword">char</span> *name)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello %s\n"</span>,name);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	hello2(<span class="string">"zhangsan"</span>);</span><br><span class="line"></span><br><span class="line">	BiConsumer(<span class="keyword">char</span>*,<span class="keyword">int</span>) hello3 = $(<span class="keyword">void</span>,(<span class="keyword">char</span> *name,<span class="keyword">int</span> age)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"hello %s %d\n"</span>,name,age);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	hello3(<span class="string">"lisi"</span>,<span class="number">22</span>);</span><br><span class="line"></span><br><span class="line">	Function(<span class="keyword">int</span>,<span class="keyword">int</span>) fact = $(<span class="keyword">int</span>,(<span class="keyword">int</span> n)&#123;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">			res *= i;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,fact(<span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">	BiFunction(<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">int</span>) sum = $(<span class="keyword">int</span>,(<span class="keyword">int</span> a,<span class="keyword">int</span> b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a + b;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum(<span class="number">4</span>,<span class="number">7</span>));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">hello zhangsan</span><br><span class="line">hello lisi 22</span><br><span class="line">120</span><br><span class="line">11</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试2"><a href="#测试2" class="headerlink" title="测试2"></a>测试2</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"lambda.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"util.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"type.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	Code(</span><br><span class="line">		</span><br><span class="line">		StringSupplier helloSupplier = $(String,()&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"hello "</span>;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		Consumer(String) out = $(<span class="keyword">void</span>,(String s)&#123;</span><br><span class="line">			PrintStringLn(s);</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		String name = <span class="string">"zhangsan"</span>;</span><br><span class="line">		out(Concat(helloSupplier(),name));</span><br><span class="line">		</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello zhangsan</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>你的鼓励，是我前进的动力！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="傲世孤尘 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="傲世孤尘 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
+          
+            <a href="/tags/c/" rel="tag"># c</a>
+          
+            <a href="/tags/奇淫技巧/" rel="tag"># 奇淫技巧</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/算法/遗传算法/0.0.1/c++/用c++实现遗传算法/" rel="next" title="用c++实现遗传算法">
+                <i class="fa fa-chevron-left"></i> 用c++实现遗传算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/me.jpg"
+                alt="傲世孤尘" />
+            
+              <p class="site-author-name" itemprop="name">傲世孤尘</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/aoshiguchen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.npmjs.com/search?q=asgc" target="_blank" title="NPM">
+                    
+                      <i class="fa fa-fw fa-globe"></i>NPM</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ee2j.com/" title="how2u" target="_blank">how2u</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.battcn.com/" title="battcn" target="_blank">battcn</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.stustyle.cn" title="狂小白" target="_blank">狂小白</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sackr.cn/" title="sackr" target="_blank">sackr</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+	<div>
+		<img style="width:80%" src="/images/qun_qrcode_java.jpg"/>
+	</div>
+ 
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#何为奇淫技巧"><span class="nav-number">1.</span> <span class="nav-text">何为奇淫技巧?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c语言实现lambda表达式的原理"><span class="nav-number">2.</span> <span class="nav-text">c语言实现lambda表达式的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现lambda表达式"><span class="nav-number">3.</span> <span class="nav-text">实现lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块级作用域"><span class="nav-number">3.1.</span> <span class="nav-text">块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">3.2.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数"><span class="nav-number">3.3.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏改写匿名函数"><span class="nav-number">3.4.</span> <span class="nav-text">宏改写匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用函数指针类型接收匿名函数对象"><span class="nav-number">3.5.</span> <span class="nav-text">用函数指针类型接收匿名函数对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏改写函数指针定义"><span class="nav-number">3.6.</span> <span class="nav-text">宏改写函数指针定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda表达式库"><span class="nav-number">4.</span> <span class="nav-text">lambda表达式库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">5.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试1"><span class="nav-number">5.1.</span> <span class="nav-text">测试1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试2"><span class="nav-number">5.2.</span> <span class="nav-text">测试2</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div style="text-align:center">
+
+  <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+     <span class="author" itemprop="copyrightHolder">傲世孤尘</span> 
+
+    
+      <span class="post-meta-divider">|</span>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-area-chart"></i>
+      </span>
+      
+        <span class="post-meta-item-text">全站统计&#58;</span>
+      
+      <span title="全站统计">26.9k</span>
+    
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <!--访问量统计-->
+  
+  <div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+      <span class="site-uv">
+        <i class="fa fa-user"></i>
+        <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+
+    
+      <span class="site-pv">
+        <i class="fa fa-eye"></i>
+        <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+  </div>
+  
+
+  鄂ICP备17029606号
+
+   <!--coding嵌入-->
+  <div>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></div>
+
+</div>
+        <!--
+
+<div class="busuanzi-count" style="text-align:center">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+-->
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/md5.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+ 
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytnn9PSY';
+      var conf = '2cb3e03eb1a8f05901da0bd333d962e0';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
